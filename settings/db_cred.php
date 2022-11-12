@@ -9,15 +9,16 @@
 
 
 //00webhost database credentials
-define('HOST', 'localhost');
-define('PASS', '');
-define('DB', 'shoppn');
-define('USER', 'root');
+//define('HOST', 'localhost');
+//define('PASS', '');
+//define('DB', 'shoppn');
+//define('USER', 'root');
 
+//heroku credentials
 
-// define('HOST', 'localhost');
-// define('PASS', '&SM_U!&Nj_@2]ZYk');
-// define('DB', 'id18107132_shoppn');
-// define('USER', 'id18107132_ecommerce');
+define('HOST', 'us-cdbr-east-06.cleardb.net');
+define('PASS', '52db3200');
+define('DB', 'heroku_9df0c08f94da864');
+define('USER', 'b0827807698ac6');
 
 ?>
