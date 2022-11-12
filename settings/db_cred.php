@@ -9,10 +9,10 @@
 
 
 //00webhost database credentials
-//define('HOST', 'localhost');
-//define('PASS', '');
-//define('DB', 'shoppn');
-//define('USER', 'root');
+// define('HOST', 'localhost');
+// define('PASS', '');
+// define('DB', 'shoppn');
+// define('USER', 'root');
 
 //heroku credentials
 
