@@ -45,6 +45,13 @@ function select_all_product_ctr(){
     // Calling insert record method in the product class and returns true or false
     return $brands->select_all_product_cls();
 }
+function search_products_ctrl(){
+
+    $brands = new product_class();
+  
+    return $brands-> search_products_cls();
+  
+  }
 
 
 //--UPDATE--//

@@ -46,6 +46,13 @@ class product_class extends db_connection
 		return $this->db_fetch_all($sql);
 		//returns an associative array
 	}
+
+	//--Search all--//
+	function search_products_cls(){
+		$sql = "SELECT * FROM `products` WHERE `product_title` LIKE '%$%'";
+		return $this ->db_fetch_all($sql);
+		//return $sql;
+	}
 	
 
 	

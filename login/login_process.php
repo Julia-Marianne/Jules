@@ -27,10 +27,10 @@ if (isset($_POST['enter'])) {
 			$_SESSION['email'] = $result['customer_email'];
 			$_SESSION['userRole'] = $result['user_role'];
 
-			if ($result['user_role']==1)
+			if ($result['user_role']==2)
 			header("Location:../admin/index.php");
 
-			if ($result['user_role']==2)
+			if ($result['user_role']==1)
 			header("Location:../view/home.php");
 
 		} 

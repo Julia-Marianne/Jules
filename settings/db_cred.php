@@ -8,7 +8,7 @@
 
 
 
-//00webhost database credentials
+//localhost database credentials
 define('HOST', 'localhost');
 define('PASS', '');
 define('DB', 'shoppn');
