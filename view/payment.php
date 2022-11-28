@@ -15,7 +15,7 @@ include_once('menu.php');
     <div class="container">
       <div class="row">
         <div class="col-sm-6 col-sm-offset-3">
-          <h1 class="module-title font-alt mb-0">Thanks for Choosing Nectar!</h1>
+          <h1 class="module-title font-alt mb-0">Thanks for Choosing Shea Jo!</h1>
         </div>
       </div>
     </div>

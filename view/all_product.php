@@ -3,7 +3,7 @@ require('../controllers/product_controller.php');
 require('../controllers/cart_controller.php');
 session_start();
 include('menu.php');
-$record=$_GET['cat'];
+$cat=$_GET['cat'];
 $category=select_one_category_ctr($cat);
 
 ?>
@@ -32,7 +32,7 @@ $category=select_one_category_ctr($cat);
           }
           else{$cid=null;}
           $qty=1;
-          foreach ($result as $record){
+          foreach ($products as $product){
             $id=$product['product_id'];
 
         ?>
