@@ -1,101 +1,93 @@
-
-<!-- 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <title></title>
-</head>
-<body>
-
-	
-create two links for register and login 
-<a href="../login/register.php">register</a>
-<a href="../login/login.php">login</a>
-
-
-
-
-
-
-</body>
-</html> -->
-
-<?php
-
-	
-
+<?php	
 	require("../settings/core.php");
+  require('../controllers/product_controller.php');
+  //require('../controllers/cart_controller.php');
+//including menu
+include('menu.php');
 
-	// session_start();
-	// Var_dump($_SESSION);
+?>
+<section class="home-section home-fade home-full-height" id="home">
+<div class="main">
+          
+  <section class="module-small" id="products">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <h2 class="module-title font-alt">Our Products</h2>
+        </div>
 
-	?>
+        <form class="form-inline" method="get" action="../actions/search.php">
+          <input class="form-control" type="search" placeholder="Search"  name="searchTerm">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="search"><i class ="fa fa-search"></i></button>
+        </form>
+      </div>
+      
+      <div class="row multi-columns-row">
+        
+        <?php
+          //SELECT ALL PRODUCT TO VIEW
+          $products=select_all_product_ctr();
+      
+          //GENERATE IP ADDRESS OF THE USER
+          $ipadd=getRealIpAddr();
 
-	<!DOCTYPE html>
-	<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-		<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script> -->
-		<title>Shoppn Homepage</title>
-	</head>
+          //CHECK IF USER IS LOGGED IN
+          if(isset($_SESSION['user_id'])) {
+            $cid=$_SESSION['user_id'];
+          }
+          else{$cid=null;}
+          
+          $qty=1;
 
+          $limit = 16;
+          $num_products=count($result);
+          $pages=ceil($num_products/$limit);
+          //LOOP THROUGH ALL PRODUCTS FOR DISPLAY
+          foreach ($result as $record){
+            $id=$product['product_id'];
 
-	<body>
+        ?>
+        
 
-	<?php
-
-	//checking if the user is an admin so they can access admin privileges.
-
-if (isset($_SESSION['name']) && $_SESSION['userRole'] == '2') {	
-	?>
-
-	<nav class="navbar navbar-light bg-light">
-	<button type="button" onclick = "document.location= '../login/register.php'"><b>Register</b></button> 
-	
-	<button type="button" onclick = "document.location= '../actions/logout.php'"><b>Logout</b></button>
-
-	<button type="button" onclick = "document.location= ''"><b>Home</b></button>
-	
-	<button type="button" onclick = "document.location= 'brand.php'"><b>Brand</b></button>
-	
-	<button type="button" onclick = "document.location= 'category.php'"><b>Category</b></button>
-	
-	<button type="button" onclick = "document.location= 'product.php'"><b>Add Product</b></button>	
-	
-	<button type="button" onclick = "document.location= 'allproduct.php'"><b>All Products</b></button>
-	 
-	<form action="product_search_result.php" method="GET">
-	<input type="text" placeholder="Search by title..." name="search" id="search">
-    <button type="submit"><b>Search</b></button> 
-	<?php } 
-	
-if (isset($_SESSION['name']) && $_SESSION['userRole'] == '1'){
-	?> 
-	<button type="button" onclick = "document.location= '../actions/logout.php'"><b>Logout</b></button> 
-	
-	<button type="button" onclick = "document.location= '../login/register.php'"><b>Register</b></button>	
-	
-	<button type="button" onclick = "document.location= 'all_product.php'"><b>All Products</b></button>	
-	
-	<button type="button" onclick = "document.location= 'cart.php'"><b>Carts</b></button>
-
-	<form action="product_search_result.php" method="GET">
-	<input type="text" placeholder="Search by title..." name="search" id="search">
-    <button type="submit"><b>Search</b></button> 
-
-	 
-			<?php }?>
-	</nav>
-	</body>
-
-	
-
-	
-	</html>	
+        <div class="col-sm-6 col-md-4 col-lg-4">
+          <div class="shop-item">
+            <div class="shop-item-image"><img style='height:250px;width:260px;overflow:hidden;' src=<?php echo $product['product_image'];?> />
+              <div class="shop-item-detail">
+                <?php if(True ) {?>
+                <a class="btn btn-round btn-b" href="<?php echo '../actions/add_to_cart.php?pid='.$id.'&ipadd='.$ipadd.'&cid='.$cid.'&qty='.$qty ?>"><span class="icon-basket"></span></a>
+                <a class="btn btn-round btn-b" href="single_product.php?id=<?= $id;?>" ><i class="far fa-eye"></i></a>
+                <?php } else{?>
+                  <a class="btn btn-round btn-b" href="single_product.php?id=<?= $id;?>" ><i class="far fa-eye"></i></a>
+                <?php } ?>
+              </div>   
+            </div>
+            <?php if(True ) {?>
+            <div class="cart" style="padding-top:5%">
+              <a class="btn btn-round btn-b" href="<?php echo '../actions/add_to_cart.php?pid='.$id.'&ipadd='.$ipadd.'&cid='.$cid.'&qty='.$qty ?>"><span class="icon-basket">Add To Cart</span></a>
+            </div>
+            <!-- ADD TO CART -->
+            <?php }else{?>
+            <div class="cart" style="padding-top:5%; color:red">
+                <a class="btn btn-danger btn-round" href="">Out of Stock</a>
+            </div>
+            <?php }?>
+              <h4 class="shop-item-title font-alt"><a href="single_product.php?id=<?= $id;?>" ><?= $product['product_title']?></a></h4> <?= $product['product_price']?>
+            </div>
+        </div>
+          
+          <?php }; ?>
+      </div> 
+      
+      <!-- pagination -->
+      
+      
+  </section>
+        
+  
+        
+  <hr class="divider-w">
+  
+</div>
+<hr class="divider-w">
+<!-- including a staple footer -->
+<?php include('../views/footer.php');?>

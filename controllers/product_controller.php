@@ -113,4 +113,64 @@ function select_one_product_ctr($id){
     return $brands->select_one_product_cls($id);
 }
 
+// selecting a product by its brand
+function select_by_category_ctr($cat){
+    // Creates an instance of the product class and appends it to $brands
+    $brands = new product_class();
+    // Calling insert record method in the product class and returns true or false
+    return $brands->select_by_category_cls($cat);
+}
+
+function countproducts_controller(){
+    $product = new product_class();
+    $countproducts = $product->countproducts_cls();
+    if($countproducts){
+        return $countproducts;
+    }else{
+        return false;
+    }  
+}
+
+function countbrands_controller(){
+    $brand = new product_class();
+    $countbrands = $brand->countbrands_cls();
+    if($countbrands){
+        return $countbrands;
+    }else{
+        return false;
+    }  
+}
+
+function countcategories_controller(){
+    $category = new product_class();
+    $countcategories = $category->countcategories_cls();
+    if($countcategories){
+        return $countcategories;
+    }else{
+        return false;
+    }  
+}
+
+function countorders_controller(){
+    $cart = new product_class();
+    $countorders = $cart->countorders_cls();
+    if ($countorders){
+        return $countorders;
+    }else{
+        return false;
+    }
+}
+
+function displayorders_controller(){
+    $cart = new product_class();
+    $order = $cart->displayorders_cls();
+    if ($order){
+        return $order;
+    }else{
+        return false;
+    }
+}
+
+
+
 ?>

@@ -1,93 +1,60 @@
-//"select * from products_where product_title LIKE "%$keywords%"
-<?php require("../controllers/product_controller.php");
-
-
+<?php
+require('../controllers/product_controller.php'); 
+session_start();
+include_once('menu.php');
+if(!isset($_GET['searchTerm'])){
+    header("location:../index.php");
+}
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>Search Result</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-
-    <link rel="stylesheet" href="../css/search.css"> -->
-</head>
-
-<body>
-
-    <nav class="navbar navbar-light bg-light">
-        <a class="nav-link" href="home.php">Home <span class="sr-only"></span></a>
-        <!--<a class="nav-link" href="cart.php">Cart <span class="sr-only"></span></a> -->
-        <form action="product_search_result.php" method="GET">
-            <input type="text" placeholder="Search by title..." name="search" id="search">
-            <button type="submit"><b>Search</b></button>
+      
+<div class="main">
+  <section class="module-small">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <h2 class="module-title font-alt">Search Results</h2>
+        </div>
+        
+        <form class="form-inline" method="get" >
+          <input class="form-control" type="search" placeholder="Search"  name="searchTerm">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="search"><i class ="fa fa-search"></i></button>
         </form>
-    </nav>
+      </div>
+  
+      <?php  
+        $product_name=$_GET['searchTerm']. "%";
+        $result=search_products_ctrl($product_name);
+        
+        if(!empty($result)){
+          foreach ($result as $key => $product){
+              $id=$product['product_id'];
 
+      ?>
+      
 
-    <?php
-    $search = $_GET['search'];
-
-
-    $product_search = search_products_ctrl($search);
-
-    foreach ($product_search as $product_one) {
-        $product_id = $product_one['product_id'];
-        $product_name = $product_one['product_title'];
-    ?>
-
-
-        <div class="container">
-            <br>
-
-
-            <div class="container page-wrapper">
-                <div class="page-inner">
-                    <div class="row">
-                        <div class="el-wrapper">
-                      
-                            <div class="box-up">
-                            <img class="img" src=<?php echo $product_one['product_image']?> alt="" style="width: 100%; height: 225">
-                                <div class="img-info">
-                                    <div class="info-inner">
-                                        <span class="p-name"><?php echo $product_one['product_title'] ?></span>
-                                        <span class="p-company"><?php echo $product_one['product_keywords'] ?></span>
-                                       
-                                    </div>
-                                    <div class="a-size"><?php echo $product_one['product_desc'] ?></span></div>
-                                </div>
-                            </div>
-
-                            <div class="box-down">
-                                <div class="h-bg">
-                                    <div class="h-bg-inner"></div>
-                                </div>
-
-                                <a class="cart" href="">
-                                    <span class="price">GH₵:<?php echo $product_one['product_price'] ?></span>
-
-                                </a>
-                                
-                            </div>
-                            <br>
-
-                            <center><button type="button" onclick = "document.location= ''"><a href="../actions/add_to_cart.php?id=<?php echo $product_one['product_id'];?>"><b>Add to Cart</b></button></center>
-                        </div>
-
-                    </div>
+      <div class="row multi-columns-row">
+        <div class="col-sm-6 col-md-3 col-lg-3">
+          <div class="shop-item">
+            <div class="shop-item-image"><img src=<?php echo $product['product_image'];?> alt="Accessories Pack"/>
+                <div class="shop-item-detail">
+                  <a class="btn btn-round btn-b" href="<?php echo '../actions/add_to_cart.php?pid='.$id.'&ipadd='.$ipadd.'&cid='.$cid.'&qty='.$qty ?>"><span class="icon-basket"></span></a>
+                  <a class="btn btn-round btn-b" href="single_product.php?id=<?= $id;?>" ><i class="far fa-eye"></i></a>
                 </div>
             </div>
-
-        </div>
-        </div>
-    <?php } ?>
-
-</body>
-
-</html>
+            <div class="cart" style="padding-top:5%">
+              <a class="btn btn-round btn-b" href="<?php echo '../actions/add_to_cart.php?pid='.$id.'&ipadd='.$ipadd.'&cid='.$cid.'&qty='.$qty ?>"><span class="icon-basket">Add To Cart</span></a>
+            </div>
+            <h4 class="shop-item-title font-alt"><a href="#"><?= $product['product_title']?></a></h4><?= $product['product_price']?>
+          </div>
+      </div>
+      <?php }} else {?>
+        <div class="alert alert-danger">Sorry nothing was found. Please Try Another term</div> 
+      <?php } ?>  
+      
+    </div>
+  </section>        
+</div>
+           
+<hr class="divider-w">
+<?php include('../views/footer.php');?>

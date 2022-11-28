@@ -105,7 +105,40 @@ class product_class extends db_connection
 			return $this->db_fetch_one("SELECT * from products where product_id='$id'");
   }
   
+  // selecting a product by its brand
+	function select_by_category_cls($cat){
+		// return associative array or false
+		return $this->db_fetch_one("SELECT * from products where product_cat='$cat'");
+	}
 
 
+
+
+function countproducts_cls(){
+	$sql ="SELECT COUNT(*) FROM products";
+	return $this->db_fetch_one($sql);
 }
+
+function countbrands_cls(){
+	$sql ="SELECT COUNT(*) FROM brands";
+	return $this->db_fetch_one($sql);
+}
+
+function countcategories_cls(){
+	$sql ="SELECT COUNT(*) FROM categories";
+	return $this->db_fetch_one($sql);
+}
+
+function countorders_cls(){
+	$sql ="SELECT COUNT(*) FROM orders";
+	return $this->db_fetch_one($sql);
+}
+
+function displayorders_cls(){
+	$sql ="select * FROM orders";
+	return $this->db_fetch_one($sql);
+}
+}
+
+
 ?>

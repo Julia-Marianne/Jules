@@ -1,6 +1,7 @@
 <?php
 
 include('../controllers/product_controller.php');
+include("../settings/core.php");
 
 //echo "I am in post";
 
