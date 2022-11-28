@@ -72,7 +72,7 @@
           <div class="collapse navbar-collapse" id="custom-collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li ><a  href="home.php" >Home</a>
-                <li class= "dropdown"><a  class="dropdown-toggle" href="./home.php#products" >Products</a>
+                <li class= "dropdown"><a  class="dropdown-toggle" href="all_product.php" >Products</a>
                 
                 <ul class="dropdown-menu">
                 <?php 

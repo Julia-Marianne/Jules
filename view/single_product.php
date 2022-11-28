@@ -1,90 +1,75 @@
 <?php
+
 require('../controllers/product_controller.php');
-require('../controllers/cart_controller.php');
-session_start();
-if(!isset($_SESSION['user_id'])){
-  $_SESSION['current_page'] = $_SERVER['REQUEST_URI'];
-  $_SESSION['qty']="";
-  $_SESSION['desc']="";
-  
- 
-}
+// return array of all rows, or false (if it failed)
+$product = select_one_product_ctr($_GET['id']);
 
-include_once('menu.php');
+$brand =  $product['product_brand'];
+$selectbrand = select_one_contact_ctr($brand);
+$category =  $product['product_cat'];
+$searchcategory = select_one_category_ctr($category);
 ?>
-<div class="main">
-  <section class="module">
-    <div class="container">
-      <?php
-      $product=select_one_product_ctr($_GET['id']);
-      $cat=$product['product_cat'];
-      $price=$product['product_price'];
-      $id=$_GET['id'];
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../CSS/bootstrap.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="../CSS/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="../CSS/responsive.css">
+
+    <script src="https://kit.fontawesome.com/75618b9696.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header style="display: flex; margin-top: 20px;">
+    <a href="index.php"><h3 style="color:#dc3545;">Home</h3></a>
+    <div>
+       <form method="post" action="../actions/search.php" style='display: flex'>
+
+        <input type="text" class="form-control mb-0" id="search" name="search" placeholder="Type here to search" style="width: 400px; margin-left: 200px">
+        <button style="margin-left: -50px" class="btn btn-primary float-right" type="submit" name="searchbutton">Search</button>
+
+        </form>
+</div>
+
+        <a href="home.php"><h3 style="color:black; margin-left: 200px;">Home</h3></a>
+        <a href="all_product.php"><h3 style="color:black; margin-left: 40px;">Products</p></h3>
+        <a href="../login/login.php"><h3 style="color:black; margin-left: 40px;">Login/Register</p></h3>
+        <a href="cart.php"><h3 style="color: black; margin-left:40px;">Cart</h3></a>
+    </header>
+
+
+        <div class='viewoneproduct' style='display: flex; margin-top: 200px; margin-left: 450px;'>
+        <!-- <form method = POST action="viewallproduct.php" -->
+            <div class='image'>
+            <img style='height: 400px; width: 400px' src="<?php echo $product['product_image'] ?>" alt="">
+            </div>
+
+            <div class='content' style='margin-left: 70px'>
+
+                <h1><?php echo $searchbrand['brand_name'] ?></h1>
+
+                <h1><?php echo $searchcat['cat_name'] ?></h1>
+                <h4><?php echo $product['product_title'] ?></h4>
+                <h4 style='color: grey;'> <?php echo $product['product_price'] ?></h4>
+                <h5 style='color: grey;'><?php echo $product['product_desc'] ?></h5>
+                <a href='../actions/cart_process.php?id=<?php echo $product['product_id'] ?>'  class='btn btn-primary'>Add to Cart</a>
+
+            </div>
+
+</form>
+
+        </div>
         
-      $ipadd=getRealIpAddr();
-        if(isset($_SESSION['user_id'])) {
-          $cid=$_SESSION['user_id'];
-        }
-        else{$cid=null;}
-      
-        $qty=1;
-      
-      ?>
-      <div class="row">
-        <div class="col-sm-6 mb-sm-40"><a class="gallery"><img src=<?= $product['product_image']; ?> alt="Single Product Image"/></a>
-          <div class="row" style= "padding-top:5%; "> 
-           <?php if( True ) {?>
-            <div class="cart" style="padding-top:5%">
-              <a class="btn btn-round btn-b" href="<?php echo '../actions/add_to_cart.php?pid='.$id.'&ipadd='.$ipadd.'&cid='.$cid.'&qty='.$qty ?>"><span class="icon-basket">Add To Cart</span></a>
-            </div>
-            <?php } else{?>
-            <div  class="cart">
-            <a class="btn btn-danger btn-round" href="">Out of Stock</a>
-            </div>
-            <?php } ?>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <div class="row">
-            <div class="col-sm-12">
-              <h1 class="product-title font-alt"><?= $product['product_title']; ?></h1>
-            </div>
-        </div>
-          
-        <div class="row mb-20">
-          <div class="col-sm-12">
-            <div class="price font-alt"><span class="amount"><?= $product['product_price']; ?> RWF</span></div>
-          </div>
-        </div>
 
-        <div class="row mb-20">
-          <div class="col-sm-12">
-            <div class="description">
-              <p><?= $product['product_desc']; ?></p>
-            </div>
-          </div>
-        </div> 
-        <div class="row mb-20">
-           <?php if( True ) {?>
-          <form method="get" action="pay_now.php">
-          <div class="col-sm-4 mb-sm-20">
-            <input class="form-control input-lg" type="number" name="qty" value="1" max="40" min="1" required="required"/>
-            <input class="form-control input-lg" type="hidden" name="pid" value=<?= $product['product_id']?>/>
-            <input class="form-control input-lg" type="hidden" name="price" value=<?= $price?>/>
-            
-          </div>
-         
-          <div class="col-sm-8"><button class="btn btn-lg btn-block btn-round btn-b" type="submit" >Buy Now</button></div>
-          </form>
-          <?php } ?>
-        </div>                
-    </div>   
-  </section>
-      
-  
 
-  <hr class="divider-w">
-  
-  <hr class="divider-w">
-<!-- include staple footer               -->
-<?php include('footer.php');?>
+
+</body>
+</html>

@@ -106,6 +106,7 @@ class db_connection
 		return mysqli_fetch_all($this->results, MYSQLI_ASSOC);
 	}
 
+	
 
 	//count data
 	/**

@@ -53,7 +53,6 @@ include('menu.php');
     ";}
       
           //GENERATE IP ADDRESS OF THE USER
-          $ipadd=getRealIpAddr();
 
           //CHECK IF USER IS LOGGED IN
           if(isset($_SESSION['user_id'])) {

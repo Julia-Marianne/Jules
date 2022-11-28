@@ -8,4 +8,7 @@ if (isset($_GET['search'])){
         header("location: ../view/product_search_result.php?searchTerm=$term");
     }
 }
+else{
+    echo "unable to search";
+}
 ?>

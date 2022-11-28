@@ -1,70 +1,79 @@
-<?php 
+<?php
+
 require('../controllers/product_controller.php');
-require('../controllers/cart_controller.php');
+// return array of all rows, or false (if it failed)
 $product = select_all_product_ctr();
-session_start();
-include('menu.php');
-$cat=$_GET['cat'];
-$category=select_one_category_ctr($cat);
+
 
 ?>
 
-<div class="main">    
-  <section class="module-small">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
-          <h2 class="module-title font-alt"><?=$category['cat_name']?></h2>
-        </div>
-  
-        <form class="form-inline" method="get" action="../actions/search.php">
-          <input class="form-control" type="search" placeholder="Search"  name="searchTerm">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="search"><i class ="fa fa-search"></i></button>
-        </form>
-      </div>
-            
-      <div class="row multi-columns-row">
-        <?php
-          
-          $products=select_by_category_ctr($cat);
-          $ipadd=getRealIpAddr();
-          if(isset($_SESSION['user_id'])) {
-            $cid=$_SESSION['user_id'];
-          }
-          else{$cid=null;}
-          $qty=1;
-          foreach ($products as $product){
-            $id=$product['product_id'];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 
-        ?>
-        <div class="col-sm-6 col-md-3 col-lg-3">
-            <div class="shop-item">
-              <div class="shop-item-image"><img src=<?php echo $product['product_image'];?> >
-                <div class="shop-item-detail">
-                  <a class="btn btn-round btn-b" href="<?php echo '../actions/add_to_cart.php?pid='.$id.'&ipadd='.$ipadd.'&cid='.$cid.'&qty='.$qty ?>"><span class="icon-basket"></span></a>
-                  <a class="btn btn-round btn-b" href="single_product.php?id=<?= $id;?>" ><i class="far fa-eye"></i></a>
-                </div>
+    <!-- Bootstrap CSS
+    <link rel="stylesheet" href="../CSS/bootstrap1.css">
+    <!- Style CSS -->
+    <link rel="stylesheet" href="../CSS/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="../CSS/responsive.css">
 
-              </div>
-           <?php if(True ) {?>
-            <div class="cart" style="padding-top:5%">
-              <a class="btn btn-round btn-b" href="<?php echo '../actions/add_to_cart.php?pid='.$id.'&ipadd='.$ipadd.'&cid='.$cid.'&qty='.$qty ?>"><span class="icon-basket">Add To Cart</span></a>
-            </div>
-            <!-- ADD TO CART -->
-            <?php }else{?>
-            <div class="cart" style="padding-top:5%; color:red">
-                <a class="btn btn-danger btn-round" href="">Out of Stock</a>
-            </div>
-            <?php }?>
-            <h4 class="shop-item-title font-alt"><a href="single_product.php?id=<?= $id;?>" ><?= $product['product_title']?></a></h4><?= $product['product_price']?>
-          </div>
-        </div>       
-        <?php }; ?>
-      </div> 
-      <div class="row mt-30">
-        <div class="col-sm-12 align-center"><a class="btn btn-b btn-round" href="shop.php#products">See all products</a></div>
-      </div>
+    <script src="https://kit.fontawesome.com/75618b9696.js" crossorigin="anonymous"></script>
+    
+</head>
+<body style=' margin-bottom: 20px'>
+
+<header style="display: flex; margin-top: 10px; color: black;">
+    <a href="home.php"><h3 style="color:#dc3545;">Home</h3></a>
+    <div>
+    <form method="post" action="../actions/search.php" style='display: flex'>
+
+        <input type="text" class="form-control mb-0" id="search" name="search" placeholder="Type here to search" style="width: 400px; margin-left: 250px">
+        <button style="margin-left: -50px" class="btn btn-primary float-right" type="submit" name="searchbutton">Search</button>
+
+    </form>
     </div>
-  </section>
-</div>
-<?php include('../views/footer.php');?>
+
+    <a href="home.php"><h3 style="color:black; margin-left: 200px;">Home</h3></a>
+        <a href="all_product.php"><h3 style="color:black; margin-left: 40px;">Products</p></h3>
+        <a href="../login/login.php"><h3 style="color:black; margin-left: 40px;">Login/Register</p></h3>
+        <a href="cart.php"><h3 style="color: black; margin-left:40px;">Cart</h3></a>
+    
+    
+</header>
+
+<h1 style='margin-top: 60px; margin-left: 600px; color: #6f42c1'>Product List</h1>
+<?php
+    foreach($product as $x){
+        echo 
+        "
+        
+        <a href='./single_product.php?id={$x['product_id']}'>
+        <div class='card' style='width: 18rem; display: inline-block; margin-bottom: 20px;'>
+            <div class='card-body'>
+            <img style='height: 200px; width: 200px' src='{$x['product_image']}' alt='Card image cap'>
+            <h5 style='color: black;' class='card-title'>{$x['product_title']}</h5>
+            <h6 class='card-subtitle mb-2 text-muted'>{$x['product_price']}</h6>
+            <p style='color: grey;' class='card-text'>{$x['product_desc']}</p>
+
+            <a href='../actions/cart_process.php?id={$x['product_id']}' class='btn btn-primary'>Add to Cart</a>
+            <a href='../actions/managecartquantity.php?id={$x['product_id']}' class='btn btn-primary'>Manage Quantity</a>
+         
+            </div>
+            
+        </div>
+        </a>
+       
+    ";
+    }
+?>
+            <!-- <br> -->
+
+<!--  -->
+
+</body>
+</html>

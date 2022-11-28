@@ -1,185 +1,115 @@
 <?php
-//connect to database class
-require_once("../classes/cart_class.php");
+require('../classes/cart_class.php');
 
-     
-    // method to get the IP adress of the client
-    function getRealIpAddr(){
-        if (!empty($_SERVER['HTTP_CLIENT_IP']))   //check ip from share internet
-        {
-        $ip=$_SERVER['HTTP_CLIENT_IP'];
-        }
-        elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))   //to check ip is pass from proxy
-        {
-        $ip=$_SERVER['HTTP_X_FORWARDED_FOR'];
-        }
-        else
-        {
-        $ip=$_SERVER['REMOTE_ADDR'];
-        }
-        return $ip;
-    }
+function add_customer_cart_controller($id, $ipaddress, $customerid, $quantity){
+    $cart_install = new Cart();
+    // call the method from the class
+    return $cart_install->add_cart_cls($id, $ipaddress, $customerid, $quantity);
+}
 
-   //method to insert into the cart
-    function insertProductIntoCart_controller($pid, $ipadd, $cid, $qty){
-        $cart= new cart();
-        //run the query
-        return $cart->insertProductIntoCart($pid, $ipadd, $cid,$qty);
-    }
-
-    //for customers who haven't logged in.
-    function insertProductIntoCartNull_controller($pid, $ipadd, $qty){
-        $cart= new cart();
-        //run the query
-        return $cart->insertProductIntoCartNull($pid, $ipadd, $qty);
-    }
-
-    //check for duplicate
-    //logged in customers
-    function checkDuplicate_controller($pid, $cid){
-        $cart= new cart();
-        return $cart->checkDuplicate($pid, $cid);
-    }
-
-    //not logged in customers
-    function checkDuplicateNull_controller($pid, $ipadd){
-        $cart= new cart();
-        return $cart->checkDuplicateNull($pid, $ipadd);
-    }
-    
-    //display cart
-    //logged in customers
-    function displayCart_controller($cid){
-        $cart = new cart();
-        //run the query
-        return $cart->displayCart($cid);
-    }
-
-    //not logged in customers
-    function displayCartNull_controller($ipadd){
-        $cart = new cart();
-        //run the query
-        return $cart->displayCartNull($ipadd);
-    }
+function select_all_cart_controller(){
+    // create an instance of the Product class
+    $cart_install = new Cart();
+    // call the method from the class
+    return $cart_install->select_all_cart_cls();
+}
 
 
-    //update cart
-    //logged in customers
-    function updateCart_controller($cid, $pid, $qty){
-        $cart= new cart();
-        //run the query
-        return $cart->updateCart($cid, $pid, $qty);
-    }
+function select_one_cart_controller(){
+    // create an instance of the Product class
+    $cart_install = new Cart();
+    // call the method from the class
+    return $cart_install->select_one_cart_cls();
 
-    //not logged in customers
-    function updateCartNull_controller($ipadd, $pid, $qty){
-        $cart= new cart();
-        //run the query
-        return $cart->updateCartNull($ipadd, $pid, $qty);
-    }
+}
 
-    //delete from cart
-    //logged in customers
-    function deleteCart_controller($cid,$pid){
-        $cart= new cart();
-        //run the query
-        return $cart->deleteCart($cid,$pid);
-    }
+function remove_cart_controller($id, $ip){
+    $cart_install = new Cart();
+    // call the method from the class
+    return $cart_install->remove_one_cart($id, $ip);
 
-    //not logged in customers
-    function deleteCartNull_controller($ipadd, $pid){
-        $cart= new cart();
+}
 
-        //run the query
-        return $cart->deleteCartNull($ipadd, $pid);
-    }
+function get_quantity($id){
+    $cart_install = new Cart();
+    // call the method from the class
+    return $cart_install->get_qty($id);
+}
 
-    //get cart total
-    //logged in customers
-    function cartValue_controller($cid){
-        $cart= new cart();
-        return $cart->cartValue($cid);
-    }
+function update_quantity($id, $qty){
+    $cart_install = new Cart();
+    // call the method from the class
+    return $cart_install->get_quantity($id, $qty);
+}
 
-    //not logged in customers
-    function cartValueNull_controller($ipadd){
-        $cart= new cart();
-        return $cart->cartValueNull($ipadd);
-    }
-     //function to add to customized orders
-     function addCustomization_controller($cid,$pid,$qty, $inv_no, $ord_date, $ord_stat, $file, $desc,$amount){
-        $cart=new cart();
-        return $cart->addCustomization($cid,$pid,$qty, $inv_no, $ord_date, $ord_stat, $file, $desc,$amount);
-    }
+// get total
+function get_total_controller($id){
+    $cart_install = new Cart();
+    // call the method from the class
+    return $cart_install->get_total($id);
+}
 
-    //function to update customized order status
-    function updateOrderstatus_controller($ord_id,$ord_stat,$amount){
-        $cart=new cart();
-        return $cart->updateOrderstatus($ord_id,$ord_stat,$amount);
-    }
-    
-     //function to select to customized orders
-    function select_customized_orders_controller(){
-        $cart=new cart();
-        return $cart->select_customized_orders();
-    }
+// function add_order_controller($cus_id, $invoice_number, $date, $status){
+//     $cart_install = new Cart();
+//     // call the method from the class
+//     return $cart_install->add_order_class($cus_id, $invoice_number, $date, $status);
+// }
 
-     //function to select one customized order by its order id
-    function select_one_customized_order_controller($id){
-        $cart=new cart();
-        return $cart->select_one_customized_order($id);
-    }
-     //function to select customized order of a customer given its status
-     function customized_orders_controller($cid){
-        $cart=new cart();
-        return $cart->customized_orders($cid);
-    }
-   
-    //function to add to orders
-    function addOrder_controller($cid, $inv_no, $ord_date, $ord_stat){
-        $cart=new cart();
-        return $cart->addOrder($cid, $inv_no, $ord_date, $ord_stat);
-    }
+function get_cus_info($cus_id){
+    $cart_install = new Cart();
+    // call the method from the class
+    return $cart_install->get_cus_info_class($cus_id);
 
-    //function to add to order details
-    function addOrderDetails_controller($ord_id, $prod_id, $qty){
-        $cart= new cart();
-        return $cart->addOrderDetails($ord_id, $prod_id, $qty);
-    }
-
-    function addPayment_controller($amt, $cid, $ord_id, $currency, $pay_date){
-        $cart= new cart();
-        return $cart->addPayment($amt, $cid, $ord_id, $currency, $pay_date);
-    }
-    //select all payments
-    function select_payments_controller(){
-        $cart= new cart();
-        return $cart->select_payments();
-    }
-
-    function recentOrder_controller(){
-        $cart = new cart();
-        return $cart->recentOrder();
-    }
-    function deleteWholeCart_controller($cid){
-        $cart = new cart();
-        return $cart->deleteWholeCart($cid);
-    }
-
-    function getOrder_controller($ord_id){
-        $cart = new cart();
-        return $cart->getOrder($ord_id);
-    }
-    //function to get all orders in the database
-    function orders_controller(){
-        $cart= new cart();
-        return $cart->orders();
-    }
-
-    function getOrderDetails_controller($ord_id){
-        $cart= new cart();
-        return $cart->getOrderDetails($ord_id);
-    }
+}
 
 
+function add_order_details_controller($order_id, $product_id, $quantity){
+    $cart_instance = new Cart();
+    // call the method from the class
+    return $cart_instance->add_order_details_class($order_id, $product_id, $quantity);
+}
+
+
+function add_payment_controller($cus_id, $order_id, $amount, $currency, $date){
+    $cart_instance = new Cart();
+    // call the method from the class
+    return $cart_instance->add_payment_class($cus_id, $order_id, $amount, $currency, $date);
+}
+
+
+function delete_from_cart_controller($cus_id){
+
+    $cart_instance = new Cart();
+    // call the method from the class
+    return $cart_instance->delete_class($cus_id);    
+}
+
+
+function insert_order_ctrl($cid, $invoice, $date){
+    $cart_instance = new Cart();
+  
+    return $cart_instance -> insert_order($cid, $invoice, $date);
+  }
+
+  function insert_payment_ctrl($amt, $cid, $oid, $date){
+    $cart_instance = new Cart();
+
+
+  return $cart_instance -> insert_payment($amt, $cid, $oid, $date);
+
+  }
+
+  function order_date_ctrl(){
+    $cart_instance= new Cart();
+  
+    return $cart_instance -> order_date();
+  }
+
+  function order_id_ctrl(){
+    $order_id = new Cart();
+  
+    return $order_id -> order_id();
+  }
+  
+  
 ?>
