@@ -26,7 +26,31 @@ include('menu.php');
         
         <?php
           //SELECT ALL PRODUCT TO VIEW
-          $products=select_all_product_ctr();
+          $products=select_all_product_ctr();?>
+
+          <h1 style='margin-top: 60px; margin-left: 600px; color: #6f42c1'>Product List</h1>
+<?php
+    foreach($products as $x){
+        echo 
+        "
+        
+        <a href='./single_product.php?id={$x['product_id']}'>
+        <div class='card' style='width: 18rem; display: inline-block; margin-bottom: 20px;'>
+            <div class='card-body'>
+            <img style='height: 200px; width: 200px' src='{$x['product_image']}' alt='Card image cap'>
+            <h5 style='color: black;' class='card-title'>{$x['product_title']}</h5>
+            <h6 class='card-subtitle mb-2 text-muted'>{$x['product_price']}</h6>
+            <p style='color: grey;' class='card-text'>{$x['product_desc']}</p>
+
+            <a href='../actions/cart_process.php?id={$x['product_id']}' class='btn btn-primary'>Add to Cart</a>
+            <a href='../actions/managecartquantity.php?id={$x['product_id']}' class='btn btn-primary'>Manage Quantity</a>
+         
+            </div>
+            
+        </div>
+        </a>
+       
+    ";}
       
           //GENERATE IP ADDRESS OF THE USER
           $ipadd=getRealIpAddr();

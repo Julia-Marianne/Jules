@@ -84,7 +84,7 @@
                   <ul class="dropdown-menu">
                                      
                     <?php if(isset($_SESSION['user_id'])) {
-                            if(($_SESSION['user_role']) == 0){?>
+                            if(($_SESSION['user_role']) == 2){?>
                               <li ><a  href="../admin/products.php" >Dashboard</a></li>
                               <li><a href="../actions/logoutprocess.php">Logout</a></li>
                               <?php } else{?>

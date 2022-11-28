@@ -48,8 +48,8 @@ class product_class extends db_connection
 	}
 
 	//--Search all--//
-	function search_products_cls(){
-		$sql = "SELECT * FROM `products` WHERE `product_title` LIKE '%$%'";
+	function search_products_cls($db_query){
+		$sql = "SELECT * FROM `products` WHERE `product_title` LIKE '".$db_query."%'";
 		return $this ->db_fetch_all($sql);
 		//return $sql;
 	}
@@ -111,7 +111,9 @@ class product_class extends db_connection
 		return $this->db_fetch_one("SELECT * from products where product_cat='$cat'");
 	}
 
-
+	function displaycategories_cls(){
+        return $this->db_fetch_one(" select * FROM categories");      
+    }
 
 
 function countproducts_cls(){

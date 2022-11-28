@@ -57,4 +57,4 @@ if(!isset($_GET['searchTerm'])){
 </div>
            
 <hr class="divider-w">
-<?php include('../views/footer.php');?>
+<?php include('../view/footer.php');?>

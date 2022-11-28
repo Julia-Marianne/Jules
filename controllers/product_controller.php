@@ -45,11 +45,11 @@ function select_all_product_ctr(){
     // Calling insert record method in the product class and returns true or false
     return $brands->select_all_product_cls();
 }
-function search_products_ctrl(){
+function search_products_ctrl($db_query){
 
     $brands = new product_class();
   
-    return $brands-> search_products_cls();
+    return $brands-> search_products_cls($db_query);
   
   }
 
@@ -119,6 +119,12 @@ function select_by_category_ctr($cat){
     $brands = new product_class();
     // Calling insert record method in the product class and returns true or false
     return $brands->select_by_category_cls($cat);
+}
+
+function displaycategories_ctr(){
+    // create an instance of the product class
+    $brands = new product_class();
+    return $brands->displaycategories_cls();     
 }
 
 function countproducts_controller(){

@@ -1,6 +1,7 @@
 <?php 
 require('../controllers/product_controller.php');
 require('../controllers/cart_controller.php');
+$product = select_all_product_ctr();
 session_start();
 include('menu.php');
 $cat=$_GET['cat'];
