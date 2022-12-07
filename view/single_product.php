@@ -53,7 +53,7 @@ include_once('menu.php');
           
         <div class="row mb-20">
           <div class="col-sm-12">
-            <div class="price font-alt"><span class="amount"><?= $product['product_price']; ?> RWF</span></div>
+            <div class="price font-alt"><span class="amount"><?= $product['product_price']; ?> GH₵</span></div>
           </div>
         </div>
 

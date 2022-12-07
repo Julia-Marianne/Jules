@@ -143,20 +143,20 @@ require('../controllers/product_controller.php');
                 <form class="form" method="post" name="Formregister"  action="register_process.php" onSubmit="return validate()">
                   <div class="form-group">
                     <label for="email">Email</label>
-                    <input class="form-control" id="email" type="text" name="email" placeholder="Email" required/>
+                    <input class="form-control" id="email" type="text" name="email" placeholder="Enter your Email" required/>
                   </div>
                   <div class="form-group">
                     <label for="name">Full Name</label>
-                    <input class="form-control" id="name" type="text" name="name" placeholder="Full Name" required/>
+                    <input class="form-control" id="name" type="text" name="name" placeholder="Enter your Full Name" required/>
                   </div>
                   <div class="form-group">
 				    <label for="contact">Phone number</label>
-				    <input class="form-control" type="number" placeholder="Contact Number" name="contact" id="contact">
+				    <input class="form-control" type="number" placeholder="Enter your Contact Number" name="contact" id="contact">
 				   
 			    </div>
                   <div class="form-group">
                     <label for="pass">Password</label>
-                    <input class="form-control" id="pass" type="password" name="pass" placeholder="Password" required/>
+                    <input class="form-control" id="pass" type="password" name="pass" placeholder="Enter your Password" required/>
                   </div>
                   <div class="form-group">
                     <label for="cpass">Confirm Password</label>

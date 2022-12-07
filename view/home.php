@@ -56,7 +56,7 @@ include('menu.php');
       <div class="row multi-columns-row">
 
         <?php
-        //SELECT ALL PRPDUCT TO VIEW
+        //SELECT ALL PRODUCT TO VIEW
         $products = select_all_products_controller();
 
         //GENERATE IP ADDRESS OF THE USER
@@ -89,7 +89,6 @@ include('menu.php');
                       <h5>View</h5>
                     </a></span>
                   <h4><a href="single_product.php?id=<?= $id; ?>"><?= $product['product_title'] ?></a></h4> <?= $product['product_price'] ?></h4>
-                  <p>Shadow your real allegiance to New York's Pirate radio with this cool cap featuring the Graphic Know Wave logo.</p>
                   <div class="button">
                     <a href="#">₵<?= $product['product_price'] ?></a><a class="cart-btn" href="<?php echo '../actions/add_to_cart.php?pid=' . $id . '&ipadd=' . $ipadd . '&cid=' . $cid . '&qty=' . $qty ?>" i class="cart-icon ion-bag"></i>ADD TO CART</a>
                   </div>
