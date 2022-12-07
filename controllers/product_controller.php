@@ -1,135 +1,109 @@
 <?php
-//connect to the product class
-include("../classes/product_class.php");
 
-//sanitize data
+require('../classes/product_class.php');
 
-//--INSERT--//
 
-function addBrand_ctr($brandName){
-    // Creates an instance of the product class and appends it to $brands
-    $brands = new product_class();
-    // Calling insert record method in the product class and returns true or false
-    return $brands->addBrand_cls($brandName);
+
+function add_category_controller($cat_name){
+    // create an instance of the product class
+    $product_instance = new Product();
+    //call method from product class
+    return $product_instance->add_category($cat_name);
 }
-function insert_category_ctr($catName){
-    // Creates an instance of the product class and appends it to $brands
-    $brands = new product_class();
-    // Calling insert record method in the product class and returns true or false
-    return $brands->insert_category_cls($catName);
-}
-function insert_product_ctr($productTitle, $productPrice, $productDesc, $productKey, $brandName, $catName){
-    // Creates an instance of the product class and appends it to $brands
-    $brands = new product_class();
-    // Calling insert record method in the product class and returns true or false
-    return $brands->insert_product_cls($productTitle, $productPrice, $productDesc, $productKey, $brandName, $catName);
-}
-
-//--SELECT--//
-function get_record_by_brand_ctr(){
-    // Creates an instance of the product class and appends it to $product
-    $brands = new product_class();
-    // Calling select all records method in the product class and returns true or false
-    return $brands->get_record_by_brand_cls();
-}
-
-function select_all_categories_ctr(){
-    // Creates an instance of the product class and appends it to $product
-    $brands = new product_class();
-    // Calling select all records method in the product class and returns true or false
-    return $brands->select_all_categories_cls();
-}
-function select_all_product_ctr(){
-    // Creates an instance of the product class and appends it to $brands
-    $brands = new product_class();
-    // Calling insert record method in the product class and returns true or false
-    return $brands->select_all_product_cls();
-}
-function search_products_ctrl($db_query){
-
-    $brands = new product_class();
-  
-    return $brands-> search_products_cls($db_query);
-  
-  }
-
-
-//--UPDATE--//
-function update_all_records_ctr($id, $brandName){
-    // Creates an instance of the product class and appends it to $product
-    $brands = new product_class();
-    // Calling select all records method in the product class and returns true or false
-    return $brands->update_all_records_cls($id, $brandName);
-}
-
-function update_all_categories_ctr($id, $catName){
-    // Creates an instance of the product class and appends it to $product
-    $brands = new product_class();
-    // Calling select all records method in the product class and returns true or false
-    return $brands->update_all_categories_cls($id, $catName);
-}
-
-function update_all_product_ctr($id, $productTitle, $productPrice, $productDesc, $productKey, $brandName, $catName){
-    // Creates an instance of the product class and appends it to $product
-    $brands = new product_class();
-    // Calling select all records method in the product class and returns true or false
-    return $brands->update_all_product_cls($id, $productTitle, $productPrice, $productDesc, $productKey, $brandName, $catName);
-}
-
-//DELETE
-function delete_all_records_ctr($id){
-    // Creates an instance of the product class and appends it to $product
-    $brands = new product_class();
-    // Calling select all records method in the product class and returns true or false
-    return $brands->delete_all_records_cls($id);
-}
-
-function delete_all_categories_ctr($id){
-    // Creates an instance of the product class and appends it to $product
-    $brands = new product_class();
-    // Calling select all records method in the product class and returns true or false
-    return $brands->delete_all_categories_cls($id);
-}
-
-//--SELECT ONE--//
-function select_one_contact_ctr($id){
-    // Creates an instance of the product class and appends it to $product
-    $brands = new product_class();
-    // Calling select all records method in the product class and returns true or false
-    return $brands->select_one_contact_cls($id);
-}
-
-function select_one_category_ctr($id){
-    // Creates an instance of the product class and appends it to $product
-    $brands = new product_class();
-    // Calling select all records method in the product class and returns true or false
-    return $brands->select_one_category_cls($id);
-}
-
-function select_one_product_ctr($id){
-    // Creates an instance of the product class and appends it to $product
-    $brands = new product_class();
-    // Calling select all records method in the product class and returns true or false
-    return $brands->select_one_product_cls($id);
-}
-
-// selecting a product by its brand
-function select_by_category_ctr($cat){
-    // Creates an instance of the product class and appends it to $brands
-    $brands = new product_class();
-    // Calling insert record method in the product class and returns true or false
-    return $brands->select_by_category_cls($cat);
+function update_category_controller($id, $name){
+    // create an instance of the product class
+    $product_instance = new Product();
+    return $product_instance->update_category($id, $name);
 }
 
 function displaycategories_ctr(){
     // create an instance of the product class
-    $brands = new product_class();
-    return $brands->displaycategories_cls();     
+    $product_instance = new Product();
+    return $product_instance->displaycategories();     
+}
+function select_one_category_controller($id){
+    // create an instance of the product class
+    $product_instance = new Product();
+    
+    return $product_instance->select_one_category($id);
+}
+function delete_category_controller($id){
+    $product_instance=new Product();
+    // return true or false
+    return $product_instance->delete_category($id);
 }
 
+function add_product_controller($cat, $brand, $title,$price,$desc,$image,$keywords){
+    // create an instance of the product class
+    $product_instance = new Product();
+    return $product_instance->add_product($cat, $brand, $title,$price,$desc,$image,$keywords);
+}
+
+
+function delete_one_product_controller($id){
+    // create an instance of the product class
+    $product_instance = new Product();
+    return $product_instance->delete_one_product($id);
+}
+
+function update_one_product_controller($id, $cat, $brand, $title,$price,$desc,$image,$keywords){
+    // create an instance of the product class
+    $product_instance = new Product();
+    return $product_instance->update_one_product($id, $cat, $brand, $title,$price,$desc,$image,$keywords);
+}
+function select_all_products_controller(){
+    // create an instance of the product class
+    $product_instance = new Product();
+    return $product_instance->select_all_products();
+}
+
+
+function select_one_product_controller($id){
+    // create an instance of the product class
+    $product_instance = new Product();
+    return $product_instance->select_one_product($id);
+}
+// selecting a product by its brand
+function select_by_category_controller($cat){
+    $product_instance = new Product();
+    return $product_instance->select_by_category($cat);
+}
+
+function  add_brand_controller($name){
+    // create an instance of the product class
+    $product_instance = new Product();
+    return $product_instance->add_brand($name);
+}
+
+function update_brand_controller($id, $name){
+    // create an instance of the product class
+    $product_instance = new Product();
+    return $product_instance->update_brand($id, $name);
+}
+function displayBrands_controller(){
+    // create an instance of the product class
+    $product_instance = new Product();
+    return $product_instance->displayBrands();      
+}
+function select_one_brand_controller($id){
+    // create an instance of the product class
+    $product_instance = new Product();
+    return $product_instance->select_one_brand($id);
+}
+function delete_brand_controller($id){
+    // create an instance of the product class
+    $product_instance = new Product();
+    return $product_instance->delete_brand($id);
+}
+function search_controller($name){
+    $product_instance=new Product();
+
+    return $product_instance->search($name);
+}
+	
 function countproducts_controller(){
-    $product = new product_class();
-    $countproducts = $product->countproducts_cls();
+    $product = new Product();
+    $countproducts = $product->countproducts();
     if($countproducts){
         return $countproducts;
     }else{
@@ -138,8 +112,8 @@ function countproducts_controller(){
 }
 
 function countbrands_controller(){
-    $brand = new product_class();
-    $countbrands = $brand->countbrands_cls();
+    $brand = new Product();
+    $countbrands = $brand->countbrands();
     if($countbrands){
         return $countbrands;
     }else{
@@ -148,8 +122,8 @@ function countbrands_controller(){
 }
 
 function countcategories_controller(){
-    $category = new product_class();
-    $countcategories = $category->countcategories_cls();
+    $category = new Product();
+    $countcategories = $category->countcategories();
     if($countcategories){
         return $countcategories;
     }else{
@@ -158,8 +132,8 @@ function countcategories_controller(){
 }
 
 function countorders_controller(){
-    $cart = new product_class();
-    $countorders = $cart->countorders_cls();
+    $cart = new Product();
+    $countorders = $cart->countorders();
     if ($countorders){
         return $countorders;
     }else{
@@ -168,15 +142,14 @@ function countorders_controller(){
 }
 
 function displayorders_controller(){
-    $cart = new product_class();
-    $order = $cart->displayorders_cls();
+    $cart = new Product();
+    $order = $cart->displayorders();
     if ($order){
         return $order;
     }else{
         return false;
     }
 }
-
 
 
 ?>

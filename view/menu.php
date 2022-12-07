@@ -71,24 +71,34 @@
           </div>
           <div class="collapse navbar-collapse" id="custom-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li ><a  href="home.php" >Home</a>
-                <li class= "dropdown"><a  class="dropdown-toggle" href="all_product.php" >Products</a>
+                <li ><a  href="./home.php" >Home</a>
+                <li ><a  href="./about.php" >About Us</a>
+                
+
+                <li class= "dropdown"><a  class="dropdown-toggle" href="./home.php#products" >Shop</a>
                 
                 <ul class="dropdown-menu">
                 <?php 
-                ?>
+                $categories=displaycategories_ctr();
+
+                foreach($categories as $cat){?>
+                    
+                      <li><a href="../view/product.php?cat= <?= $cat['cat_id']?> "><?=$cat['cat_name']?></a></li>
+                    
+                
+                <?php }?>
                 </ul>
                 </li>
 
-                <li class= "dropdown"><a  class="dropdown-toggle" href="../login/register.php" ><i class="fa fa-user" aria-hidden="true"></i> Login/Register</a>
+                <li class= "dropdown"><a  class="dropdown-toggle" href="../login/register.php" ><i class="fa fa-user" aria-hidden="true"></i> My Account</a>
                   <ul class="dropdown-menu">
                                      
                     <?php if(isset($_SESSION['user_id'])) {
-                            if(($_SESSION['user_role']) == 2){?>
+                            if(($_SESSION['user_role']) == 0){?>
                               <li ><a  href="../admin/products.php" >Dashboard</a></li>
-                              <li><a href="../actions/logoutprocess.php">Logout</a></li>
+                              <li><a href="../login/logout.php">Logout</a></li>
                               <?php } else{?>
-                                <li><a href="../actions/logoutprocess.php">Logout</a></li>
+                                <li><a href="../login/logout.php">Logout</a></li>
                                 
                             <?php }
                             

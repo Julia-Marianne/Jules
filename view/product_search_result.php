@@ -7,6 +7,8 @@ if(!isset($_GET['searchTerm'])){
 }
 ?>
 
+<link rel="stylesheet" href="../assets/css/products.css">
+
       
 <div class="main">
   <section class="module-small">
@@ -24,7 +26,7 @@ if(!isset($_GET['searchTerm'])){
   
       <?php  
         $product_name=$_GET['searchTerm']. "%";
-        $result=search_products_ctrl($product_name);
+        $result=search_controller($product_name);
         
         if(!empty($result)){
           foreach ($result as $key => $product){
@@ -33,20 +35,24 @@ if(!isset($_GET['searchTerm'])){
       ?>
       
 
-      <div class="row multi-columns-row">
-        <div class="col-sm-6 col-md-3 col-lg-3">
-          <div class="shop-item">
-            <div class="shop-item-image"><img src=<?php echo $product['product_image'];?> alt="Accessories Pack"/>
-                <div class="shop-item-detail">
-                  <a class="btn btn-round btn-b" href="<?php echo '../actions/add_to_cart.php?pid='.$id.'&ipadd='.$ipadd.'&cid='.$cid.'&qty='.$qty ?>"><span class="icon-basket"></span></a>
-                  <a class="btn btn-round btn-b" href="single_product.php?id=<?= $id;?>" ><i class="far fa-eye"></i></a>
+      <div class="col-sm-6 col-md-4 col-lg-4">
+            <div class="shop-item">
+              <div class="outer">
+                <div class="content animated fadeInLeft">
+                  <span class="bg animated fadeInDown"><a href="single_product.php?id=<?= $id; ?>">
+                      <h5>View</h5>
+                    </a></span>
+                  <h4><a href="single_product.php?id=<?= $id; ?>"><?= $product['product_title'] ?></a></h4> <?= $product['product_price'] ?></h4>
+                  <p>Shadow your real allegiance to New York's Pirate radio with this cool cap featuring the Graphic Know Wave logo.</p>
+                  <div class="button">
+                    <a href="#">₵<?= $product['product_price'] ?></a><a class="cart-btn" href="<?php echo '../actions/add_to_cart.php?pid=' . $id . '&ipadd=' . $ipadd . '&cid=' . $cid . '&qty=' . $qty ?>" i class="cart-icon ion-bag"></i>ADD TO CART</a>
+                  </div>
+
                 </div>
+                <img src=<?php echo $product['product_image']; ?> width="300px" class="animated fadeInRight">
+              </div>
             </div>
-            <div class="cart" style="padding-top:5%">
-              <a class="btn btn-round btn-b" href="<?php echo '../actions/add_to_cart.php?pid='.$id.'&ipadd='.$ipadd.'&cid='.$cid.'&qty='.$qty ?>"><span class="icon-basket">Add To Cart</span></a>
-            </div>
-            <h4 class="shop-item-title font-alt"><a href="#"><?= $product['product_title']?></a></h4><?= $product['product_price']?>
-          </div>
+           
       </div>
       <?php }} else {?>
         <div class="alert alert-danger">Sorry nothing was found. Please Try Another term</div> 

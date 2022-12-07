@@ -1,40 +1,44 @@
 <?php
-//connect to database class
-require("../settings/db_class.php");
 
-/**
-*Customer class to handle all functions 
-*/
-/**
- *@author Julia-Marian Hudson
- *
- */
+require('../settings/db_class.php');
 
-class customer_class extends db_connection
-{
-	//--INSERT--//
-	function insert_record_cls($usern, $userEmail, $userP, $userCountry, $userCity, $userContact, $userRole){
-		$sql= "INSERT INTO `customer`( `customer_name`, `customer_email`, `customer_pass`, `customer_country`, `customer_city`, `customer_contact`, `user_role`) VALUES ('$usern', '$userEmail', '$userP', '$userCountry', '$userCity', '$userContact', '$userRole')";
-		return $this->db_query($sql);
+// inherit the methods from Connection
+class customer extends db_connection{
+
+
+	function add_customer($name, $email, $password,$contact,$role){
+		// return true or false
+		return $this->db_query("insert into customer(customer_name,customer_email, customer_pass, customer_contact,user_role) 
+        values('$name', '$email', '$password','$contact','$role')");
 	}
 
-	//--SELECT ONE RECORD--//
-	function get_record_by_email_cls($userEmail){
-		$sql= "SELECT * FROM `customer` WHERE `customer_email`= '$userEmail'";
-		return $this->db_fetch_one($sql);
-		//returns an associative array
+	function delete_one_customer($id){
+		// return true or false
+		return $this->db_query("delete from customers where customer_id = '$id'");
 	}
 
-
+	function update_one_customer($id,$name, $email, $password,$country,$city,$contact,$image,$role){
+		// return true or false
+		return $this->db_query("update customers set customer_name='$name', customer_email='$email', customer_pass='$password' 
+        customer_country='$country', customer_city='$city', customer_contact='$contact', customer_image='$image' 
+        where customer_id = '$id'");
 	}
 
-	//--UPDATE--//
+	function select_all_customers(){
+		// return array or false
+		return $this->db_fetch_all("select * from customer");
+	}
 
+	function select_one_customer($email){
+		// return associative array or false
+		return $this->db_fetch_one("select * from customer where customer_email='$email'");
+	}
+	//select customer using their id
+	function select_customer($id){
+		// return associative array or false
+		return $this->db_fetch_one("select * from customer where customer_id='$id'");
+	}
 
-
-	//--DELETE--//
-	
-
-
+}
 
 ?>

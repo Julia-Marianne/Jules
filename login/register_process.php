@@ -1,33 +1,31 @@
 <?php
 
-include('../controllers/customer_controller.php');
-//echo "I am in post";
+require('../controllers/customer_controller.php');
 
+// check if theres a POST variable with the name 'register'
+if(isset($_POST['register'])){
+    // retrieve the deatils of the customer
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $contact=$_POST['contact'];
+    $pass=password_hash($_POST["pass"], PASSWORD_DEFAULT);
+    $cpass=password_hash($_POST["cpass"], PASSWORD_DEFAULT);
+    $role=1;
 
-if (isset($_POST['enter'])) {
-	//Grabs the data
-	$usern = $_POST['fullname'];
-	$userEmail = $_POST['email'];
-	$userP = base64_encode($_POST['password']);
-	$userCountry = $_POST['country'];
-	$userCity = $_POST['city'];
-	$userContact = $_POST['contact'];
-	$userRole = 1;
+   // $result=$mysqli->select_all_customers_controller();
 
-	$result = insert_record_ctr($usern, $userEmail, $userP, $userCountry, $userCity, $userContact, $userRole);
+  
 
-	if($result){
-		header("Location:../login/login.php");
-		
-	}
-	else{
-		echo "fail";
-	}
-
-	//save_me_ctr($usern, $usertel);
-
-	//echo "I am in post";
+   if ($_POST['pass']===$_POST['cpass']){
+        $result=add_customer_controller($name, $email, $pass,$contact,$role);
+    
+        if($result===true){
+            echo"<script>alert('User Registration Completed!')</script>";
+            header("Location:login.php");
+        }
+        else{
+            echo "<script>alert('Oops! ')</script>";
+        }
+} 
 }
-
-
 ?>

@@ -1,10 +1,10 @@
-<div class="module-small bg-dark">
+<div class="module-small bg-primary">
   <div class="container">
     <div class="row">
       <div class="col-sm-6">
         <div class="widget">
           <h5 class="widget-title font-alt">About Shea Jo</h5>
-          <p>Shea Products</p>
+          <p>Shea butter & black soap</p>
           <p>Phone: +233552606141</p>
           <p>Email:<a href="#"> sheajo@gmail.com</a></p>
         </div>
@@ -14,9 +14,10 @@
           <h5 class="widget-title font-alt">Our Products vary from:</h5>
           <ul class="icon-list">
             <li>Black Soap </li>
-            <li>Shea Butter </li>
-            <li>Shea Oils </li>
-            <li>Virgin Coconut oils </li>
+            <li>Organic Shea butter </li>
+            <li>Body lotion </li>
+            <li>Bronzer </li>
+            <li>Oils </li>
           
           </ul>
         </div>
@@ -25,7 +26,7 @@
   </div>
 </div>
 <hr class="divider-d">
-<footer class="footer bg-dark">
+<footer class="footer bg-primary">
   <div class="container">
     <div class="row">
       <div class="col-sm-6">

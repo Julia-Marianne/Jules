@@ -1,37 +1,34 @@
 <?php
-// require('../settings/core.php');
+require_once("../controllers/cart_controller.php");
+
 session_start();
-require('../controllers/cart_controller.php');
-// require('../actions/returnUser.php');
+// deleting an  item from the cart
+if(isset($_GET['deleteid'])){
 
-// echo 'hello';
+    $pid = $_GET['deleteid'];
+    $ipadd = getRealIpAddr();
+    if(isset($_SESSION['user_id'])){
+       $cid = $_SESSION['user_id'];
+        $delete = deleteCart_controller($cid,$pid);
+        if($delete){
+            header("location: ../view/cart.php");
+        }else{
+            echo "something went wrong";
+        }
 
-if(isset($_GET['id'])){
-    $id = $_GET['id'];
-
-    $customerid = $_SESSION['user_id'];
-    
-    $ipaddress = $_SERVER['REMOTE_ADDR'];
-    
-    $quantity = '1';
-    
-    $result = add_customer_cart_controller($id, $ipaddress, $customerid, $quantity);
-    
-    if($result === true){
-        header('Location: ../view/viewcart.php');
     }else{
-        echo "failed to drop in cart";
+       $delete = deleteCartNull_controller($ipadd,$pid);
+        if($delete){
+            header("location: ../view/cart.php");
+        }else{
+            echo "something went wrong";
+        }
     }
-    
-    
-    // echo "$id";
-    // echo '<br>';
-    // echo "$customerid";
-    // echo '<br>';
-    // echo "$ipaddress";
-    // echo '<br>';
-    // echo "$quantity";
-    
+
+}else{
+    header("location:../view/home.php");
 }
 
+
+?>
 ?>

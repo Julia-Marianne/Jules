@@ -1,48 +1,50 @@
 <?php
+require('../settings/core.php');
+require('../controllers/customer_controller.php');
 
-session_start();
+if (isset($_POST['login'])) {
+	$email = $_POST['email'];
+	$password =$_POST['password'];
+    
+    //select a customer with the given email
+	$result = select_one_customer_controller($email);
+    
+	if (empty($result)) {
+		$_SESSION['error'] = "Email Does not Exist!";
+        $error_msg=$_SESSION['error'];
+        echo ("<script>alert('$error_msg'); window.location.href = 'login.php';</script>");
+		
+	} else {
+        if (password_verify($password, $result['customer_pass'])){
+            $_SESSION['user_id'] = $result['customer_id'];
+            $_SESSION['user-email']=$email;
+            $_SESSION['user_role'] = $result['user_role'];
+            if($_SESSION['user_role']==0){
+                header("Location: ../admin/products.php");
+            }
+            else{
+                if(!isset($_SESSION['current_page'])){
+                    header("Location: ../index.php");
+                }
+                else{
+                    header("Location: ". $_SESSION['current_page']);
+                }
+                
+            }
+            
+        }
+        else{
+            $_SESSION['error'] = 'Incorrect password!';
+            $message = $_SESSION['error'];
+            echo "<script>alert('$message');window.location.href = 'login.php';</script>";
+        }
 
-include('../controllers/customer_controller.php');
-//echo "I am in post";
-
-
-if (isset($_POST['enter'])) {
-	// getting users input from the form.
-	$userEmail = $_POST['email'];
-	$userP = $_POST['password'];
-
-	// check if email exists in the database. Returns the user's data if it exists or returns false.
-	$result = get_record_by_email_ctr($userEmail);
-
-	// Set the correct pasword from the db to a variable
-	$db_pass = base64_decode($result['customer_pass']);
-
-	// if email is in the database
-	if($result){
-		// go ahead and check if the two passwords match
-		if ($userP == $db_pass) {
-			// Store logged in users credentials
-			$_SESSION['id'] = $result['customer_id'];
-			$_SESSION['name'] = $result['customer_name'];
-			$_SESSION['email'] = $result['customer_email'];
-			$_SESSION['userRole'] = $result['user_role'];
-
-			if ($result['user_role']==2)
-			header("Location:../admin/index.php");
-
-			if ($result['user_role']==1)
-			header("Location:../view/home.php");
-
-		} 
-		else {
-			echo 'Invalid Email or password';
-		}
-	}
-	else{
-		echo "Email does not exist";
 	}
 }
 
+else{
+    $_SESSION['error'] = 'Input your credentials first';
+    check_error();
+}
 
 ?>
-

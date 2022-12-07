@@ -1,146 +1,114 @@
 <?php
-//connect to database class
-require("../settings/db_class.php");
 
-/**
-*Customer class to handle all functions 
-*/
-/**
- *@author Julia-Marian Hudson
- *
- */
+require('../settings/db_class.php');
 
-class product_class extends db_connection
-{
-	//--INSERT--//
-	function addBrand_cls($brandName){
-		$sql= "INSERT INTO `brands`( `brand_name`) VALUES ('$brandName')";
-		return $this->db_query($sql);
+// inherit the methods from Connection
+class Product extends db_connection{
+	//adding a product
+	function add_category($cat_name){
+		// return true or false
+		return $this->db_query("insert into categories (cat_name) values('$cat_name')");
 	}
-	function insert_category_cls($catName){
-		$sql= "INSERT INTO `categories`( `cat_name`) VALUES ('$catName')";
-		return $this->db_query($sql);
-		//returns an associative array
-	}
-	function insert_product_cls($productTitle, $productPrice, $productDesc, $productKey, $brandName, $catName,){
-		$sql= "INSERT INTO `products`(`product_title`,`product_price`,`product_desc`,`product_keywords`, `product_brand`,`product_cat`) VALUES ('$productTitle', '$productPrice', '$productDesc', '$productKey', '$brandName', '$catName')";
-		return $this->db_query($sql);
-		//returns an associative array
+	function update_category($id, $name){
+		// return true or false
+		return $this->db_query("update categories set cat_name='$name'  where cat_id = '$id'");
 	}
 
-	//--SELECT ALL RECORDs--//
-	function get_record_by_brand_cls(){
-		$sql= "SELECT * FROM `brands`";
-		return $this->db_fetch_all($sql);
-		//returns an associative array
-	}
-
-	function select_all_categories_cls(){
-		$sql= "SELECT * FROM `categories`";
-		return $this->db_fetch_all($sql);
-		//returns an associative array
-	}
-
-	function select_all_product_cls(){
-		$sql= "SELECT * FROM `products`";
-		return $this->db_fetch_all($sql);
-		//returns an associative array
-	}
-
-	//--Search all--//
-	function search_products_cls($db_query){
-		$sql = "SELECT * FROM `products` WHERE `product_title` LIKE '".$db_query."%'";
-		return $this ->db_fetch_all($sql);
-		//return $sql;
-	}
-	
-
-	
-
-	//--UPDATE--//
-	function update_all_records_cls($id,$brandName){
-	$sql= "UPDATE brands set brand_name = '$brandName'  where brand_id ='$id' ";
-	return $this->db_query($sql);
-  }
-  function update_all_categories_cls($id,$catName){
-	$sql= "UPDATE categories set cat_name = '$catName'  where cat_id ='$id' ";
-	return $this->db_query($sql);
-  }
-
-  function update_all_product_cls($id, $productTitle, $productPrice, $productDesc, $productKey, $brandName, $catName){
-	$sql= "UPDATE products set `product_title`='$productTitle',`product_price`='$productPrice',`product_desc`='$productDesc',`product_keywords`='$productKey', `product_brand`='$brandName', `product_cat`='$catName'  where product_id ='$id' ";
-	return $this->db_query($sql);
-  }
-
-
-	  
-	//--DELETE--//
-	  function delete_all_records_cls($id){
-	  $sql= "DELETE FROM brands where brand_id = '$id' ";
-	  return $this->db_query($sql);
-	  }
-	function delete_all_categories_cls($id){
-	  $sql= "DELETE FROM categories where cat_id = '$id' ";
-	  return $this->db_query($sql);
-	}
-
-	function select_one_contact_cls($id){
-		  // return array or false
+	function displaycategories(){
+        return $this->db_fetch_all(" select * FROM categories");      
+    }
+	function select_one_category($id){
 		// return associative array or false
-			  return $this->db_fetch_one("SELECT * from brands where brand_id='$id'");
-		  }
-  
-	  
-	function select_one_category_cls($id){
-  
-		  // return array or false
-		// return associative array or false
-			  return $this->db_fetch_one("SELECT * from categories where cat_id='$id'");
+		return $this->db_fetch_one("select * from categories where cat_id='$id'");
+	}
+	function delete_category($id){
+		// return true or false
+		return $this->db_query("delete from categories where cat_id = '$id'");
 	}
 
-	function select_one_product_cls($id){
-  
+
+	function add_product($cat, $brand, $title,$price,$desc,$image,$keywords){
+		// return true or false
+		return $this->db_query("insert into products(product_cat, product_brand, product_title, product_price, product_desc, product_image, product_keywords) 
+        values('$cat', '$brand', '$title','$price','$desc', '$image', '$keywords')");
+	}
+    
+	function delete_one_product($id){
+		// return true or false
+		return $this->db_query("delete from products where product_id = '$id'");
+	}
+
+	function update_one_product($id, $cat, $brand, $title,$price,$desc,$image,$keywords){
+		// return true or false
+		return $this->db_query("update products set product_cat='$cat', product_brand='$brand', product_title='$title' ,product_price='$price', product_desc='$desc', 
+        product_image='$image', product_keywords='$keywords' where product_id = '$id'");
+	}
+    function select_all_products(){
 		// return array or false
-	  // return associative array or false
-			return $this->db_fetch_one("SELECT * from products where product_id='$id'");
-  }
-  
-  // selecting a product by its brand
-	function select_by_category_cls($cat){
+		return $this->db_fetch_all("select * from products");
+	}
+	
+	function select_one_product($id){
 		// return associative array or false
-		return $this->db_fetch_one("SELECT * from products where product_cat='$cat'");
+		return $this->db_fetch_one("select * from products where product_id='$id'");
+	}
+	// selecting a product by its brand
+	function select_by_category($cat){
+		// return associative array or false
+		return $this->db_fetch_all("select * from products where product_cat='$cat'");
+	}
+    function  add_brand($name){
+		// return true or false
+		return $this->db_query("insert into brands(brand_name) values ('$name')");
+	}
+    function update_brand($id, $name){
+		// return true or false
+		return $this->db_query("update brands set brand_name='$name'  where brand_id = '$id'");
+	}
+	function displayBrands(){
+        return $this->db_fetch_all(" select * FROM brands");      
+    }
+	function select_one_brand($id){
+		// return associative array or false
+		return $this->db_fetch_one("select * from brands where brand_id='$id'");
+	}
+    function delete_brand($id){
+		// return true or false
+		return $this->db_query("delete from brands where brand_id = '$id'");
+	}
+	function search($name){
+		$sql = "SELECT * FROM products WHERE product_title LIKE '%$name%' OR product_keywords LIKE '%$name%'";
+		return $this->db_fetch_all($sql);
 	}
 
-	function displaycategories_cls(){
-        return $this->db_fetch_one(" select * FROM categories");      
+	public function countproducts(){
+        $sql ="SELECT COUNT(*) FROM products";
+        return $this->db_fetch_one($sql);
+    }
+
+    public function countbrands(){
+        $sql ="SELECT COUNT(*) FROM brands";
+        return $this->db_fetch_one($sql);
+    }
+
+    public function countcategories(){
+        $sql ="SELECT COUNT(*) FROM categories";
+        return $this->db_fetch_one($sql);
+    }
+
+	function countorders(){
+        $sql ="SELECT COUNT(*) FROM orders";
+        return $this->db_fetch_one($sql);
+    }
+
+	function displayorders(){
+        $sql ="select * FROM orders";
+        return $this->db_fetch_all($sql);
     }
 
 
-function countproducts_cls(){
-	$sql ="SELECT COUNT(*) FROM products";
-	return $this->db_fetch_one($sql);
-}
+	
 
-function countbrands_cls(){
-	$sql ="SELECT COUNT(*) FROM brands";
-	return $this->db_fetch_one($sql);
 }
-
-function countcategories_cls(){
-	$sql ="SELECT COUNT(*) FROM categories";
-	return $this->db_fetch_one($sql);
-}
-
-function countorders_cls(){
-	$sql ="SELECT COUNT(*) FROM orders";
-	return $this->db_fetch_one($sql);
-}
-
-function displayorders_cls(){
-	$sql ="select * FROM orders";
-	return $this->db_fetch_one($sql);
-}
-}
-
 
 ?>

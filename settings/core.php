@@ -1,37 +1,48 @@
 <?php
-//start session
-session_start(); 
-
 //for header redirection
 ob_start();
 
+//start session
+session_start(); 
+
+//get the name of the current page
+$current_file = $_SERVER['SCRIPT_NAME']; 
+
 //funtion to check for login
-function loggedIn(){
-if (isset($_SESSION["customer_id"])){
-    return true;
-};
-    return false;
+function check_login(){
+	//check if login session exit
+	if (!isset($_SESSION['user_id'])) 
+	{
+		//redirect to login page
+    	header('Location: ../login/login.php');
+	}
+	else{
+		return true;
+	}
 }
 
-function session_login ($cid, $user_role){
-    $_SESSION["customer_id"] = $cid;
-    $_SESSION["user_role"] = $user_role;
+//function to check for permission 
+function check_permission(){
+	//get session role
+	if (isset($_SESSION['user_role'])) {
+		//assign session to an array
+		if ($_SESSION['user_role'] ==0){
+			return 0;
+		}
+		
+		return 1;
+	}
+	return 1;
 }
 
-//function to get user ID
-function user_ID(){
-    return $_SESSION["customer_id"];
+function check_error(){
+	if(isset($_SESSION['error'])){
+		$message = $_SESSION['error'];
+		echo "<script>alert('$message');</script>";
+		unset($_SESSION['error']);
+
+	}
 }
 
-//function to check for role (admin, customer, etc)
-function admin_user(){
-    return $_SESSION["user_role"] == 1;
-}
-
-//function to check for logout
-function loggedOut(){
- unset ($_SESSION["customer_id"]);
- unset ($_SESSION["user_role"]);
-}
 
 ?>

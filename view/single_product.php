@@ -1,343 +1,90 @@
-<!DOCTYPE html>
-<html lang="zxx" class="no-js">
-
-<head>
-	<!-- Mobile Specific Meta -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Favicon-->
-	<link rel="shortcut icon" href="img/fav.png">
-	<!-- Author Meta -->
-	<meta name="author" content="CodePixar">
-	<!-- Meta Description -->
-	<meta name="description" content="">
-	<!-- Meta Keyword -->
-	<meta name="keywords" content="">
-	<!-- meta character set -->
-	<meta charset="UTF-8">
-	<!-- Site Title -->
-	<title>Shea Jo</title>
-	<!--
-			CSS
-			============================================= -->
-	<link rel="stylesheet" href="../css/linearicons.css">
-	<link rel="stylesheet" href="../css/font-awesome.min.css">
-	<link rel="stylesheet" href="../css/themify-icons.css">
-	<link rel="stylesheet" href="../css/bootstrap.css">
-	<link rel="stylesheet" href="../css/owl.carousel.css">
-	<link rel="stylesheet" href="../css/nice-select.css">
-	<link rel="stylesheet" href="../css/nouislider.min.css">
-	<link rel="stylesheet" href="../css/ion.rangeSlider.css" />
-	<link rel="stylesheet" href="../css/ion.rangeSlider.skinFlat.css" />
-	<link rel="stylesheet" href="../css/main.css">
-</head>
-
-<body>
-
-	<!-- Start Header Area -->
-	<header class="header_area sticky-header">
-		<div class="main_menu">
-			<nav class="navbar navbar-expand-lg navbar-light main_box">
-				<div class="container">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="home.php"><img src="img/logo.png" alt=""></a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-						<ul class="nav navbar-nav menu_nav ml-auto">
-							<li class="nav-item active"><a class="nav-link" href="home.php">Home</a></li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Shop</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="all_product.php">Product Display</a></li>
-									<li class="nav-item"><a class="nav-link" href="single_product.php">Single Product</a></li>
-									<li class="nav-item"><a class="nav-link" href="payment.php">Product Checkout</a></li>
-									<li class="nav-item"><a class="nav-link" href="cart.php">Shopping Cart</a></li>
-									<li class="nav-item"><a class="nav-link" href="confirm.php">Confirmation</a></li>
-								</ul>
-							</li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Login/Register</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="../login/login.php">Login</a></li>
-									<li class="nav-item"><a class="nav-link" href="../login/register.php">Register</a></li>	
-								</ul>
-							</li>
-							<li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
-						</ul>
-						<ul class="nav navbar-nav navbar-right">
-							<li class="nav-item"><a href="cart.php" class="cart"><span class="ti-bag"></span></a></li>
-							<li class="nav-item">
-								<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-		</div>
-		<div class="search_input" id="search_input_box">
-			<div class="container">
-				<form class="d-flex justify-content-between">
-					<input type="text" class="form-control" id="search_input" placeholder="Search Here">
-					<button type="submit" class="btn"></button>
-					<span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
-				</form>
-			</div>
-		</div>
-	</header>
-	<!-- End Header Area -->
-
-	<!-- Start Banner Area -->
-	<section class="banner-area organic-breadcrumb">
-		<div class="container">
-			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-				<div class="col-first">
-					<h1>Product Details Page</h1>
-					<nav class="d-flex align-items-center">
-						<a href="home.php">Home<span class="lnr lnr-arrow-right"></span></a>
-						<a href="all_product.php">Shop<span class="lnr lnr-arrow-right"></span></a>
-						<a href="single_product.php">product-details</a>
-					</nav>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End Banner Area -->
-
-	<!--================Single Product Area =================-->
-	<div class="product_image_area">
-		<div class="container">
-			<div class="row s_product_inner">
-				<div class="col-lg-6">
-					<div class="s_Product_carousel">
-						<div class="single-prd-item">
-							<img class="img-fluid" src="../img/category/s-p1.jpg" alt="">
-						</div>
-						<div class="single-prd-item">
-							<img class="img-fluid" src="../img/category/s-p1.jpg" alt="">
-						</div>
-						<div class="single-prd-item">
-							<img class="img-fluid" src="../img/category/s-p1.jpg" alt="">
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-5 offset-lg-1">
-					<div class="s_product_text">
-						<h3>Faded SkyBlu Denim Jeans</h3>
-						<h2>$149.99</h2>
-						<ul class="list">
-							<li><a class="active" href="#"><span>Category</span> : Household</a></li>
-							<li><a href="#"><span>Availibility</span> : In Stock</a></li>
-						</ul>
-						<p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for
-							something that can make your interior look awesome, and at the same time give you the pleasant warm feeling
-							during the winter.</p>
-						<div class="product_count">
-							<label for="qty">Quantity:</label>
-							<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-							 class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-							 class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-						</div>
-						<div class="card_area d-flex align-items-center">
-							<a class="primary-btn" href="cart.php">Add to Cart</a>
-
-                            <br>
-                            <br>
-							<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
-							<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-    <br>
-    <br>
-	<!--================End Single Product Area =================-->
-
-	<!--================End Product Description Area =================-->
-	<!-- End related-product Area -->
-
-	<!-- start footer Area -->
-	<footer class="footer-area section_gap">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3  col-md-6 col-sm-6">
-					<div class="single-footer-widget">
-						<h6>About Us</h6>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore
-							magna aliqua.
-						</p>
-					</div>
-				</div>
-				<div class="col-lg-4  col-md-6 col-sm-6">
-					<div class="single-footer-widget">
-						<h6>Newsletter</h6>
-						<p>Stay update with our latest</p>
-						<div class="" id="mc_embed_signup">
-
-							<form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-							 method="get" class="form-inline">
-
-								<div class="d-flex flex-row">
-
-									<input class="form-control" name="EMAIL" placeholder="Enter Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '"
-									 required="" type="email">
-
-
-									<button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
-									<div style="position: absolute; left: -5000px;">
-										<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
-									</div>
-
-									<!-- <div class="col-lg-4 col-md-4">
-												<button class="bb-btn btn"><span class="lnr lnr-arrow-right"></span></button>
-											</div>  -->
-								</div>
-								<div class="info"></div>
-							</form>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3  col-md-6 col-sm-6">
-					<div class="single-footer-widget mail-chimp">
-						<h6 class="mb-20">Instragram Feed</h6>
-						<ul class="instafeed d-flex flex-wrap">
-							<li><img src="img/i1.jpg" alt=""></li>
-							<li><img src="img/i2.jpg" alt=""></li>
-							<li><img src="img/i3.jpg" alt=""></li>
-							<li><img src="img/i4.jpg" alt=""></li>
-							<li><img src="img/i5.jpg" alt=""></li>
-							<li><img src="img/i6.jpg" alt=""></li>
-							<li><img src="img/i7.jpg" alt=""></li>
-							<li><img src="img/i8.jpg" alt=""></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-2 col-md-6 col-sm-6">
-					<div class="single-footer-widget">
-						<h6>Follow Us</h6>
-						<p>Let us be social</p>
-						<div class="footer-social d-flex align-items-center">
-							<a href="#"><i class="fa fa-facebook"></i></a>
-							<a href="#"><i class="fa fa-twitter"></i></a>
-							<a href="#"><i class="fa fa-dribbble"></i></a>
-							<a href="#"><i class="fa fa-behance"></i></a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
-				<p class="footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-</p>
-			</div>
-		</div>
-	</footer>
-	<!-- End footer Area -->
-
-	<script src="../js/vendor/jquery-2.2.4.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-	 crossorigin="anonymous"></script>
-	<script src="../js/vendor/bootstrap.min.js"></script>
-	<script src="../js/jquery.ajaxchimp.min.js"></script>
-	<script src="../js/jquery.nice-select.min.js"></script>
-	<script src="../js/jquery.sticky.js"></script>
-	<script src="../js/nouislider.min.js"></script>
-	<script src="../js/jquery.magnific-popup.min.js"></script>
-	<script src="../js/owl.carousel.min.js"></script>
-	<!--gmaps Js-->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-	<script src="../js/gmaps.min.js"></script>
-	<script src="../js/main.js"></script>
-
-</body>
-
-</html>
-
 <?php
-
 require('../controllers/product_controller.php');
-// return array of all rows, or false (if it failed)
-$product = select_one_product_ctr($_GET['id']);
+require('../controllers/cart_controller.php');
+session_start();
+if(!isset($_SESSION['user_id'])){
+  $_SESSION['current_page'] = $_SERVER['REQUEST_URI'];
+  $_SESSION['qty']="";
+  $_SESSION['desc']="";
+  
+ 
+}
 
-$brand =  $product['product_brand'];
-$selectbrand = select_one_contact_ctr($brand);
-$category =  $product['product_cat'];
-$searchcategory = select_one_category_ctr($category);
+include_once('menu.php');
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../CSS/bootstrap.css">
-    <!-- Style CSS -->
-    <link rel="stylesheet" href="../CSS/style.css">
-    <!-- Responsive CSS -->
-    <link rel="stylesheet" href="../CSS/responsive.css">
-
-    <script src="https://kit.fontawesome.com/75618b9696.js" crossorigin="anonymous"></script>
-</head>
-<body>
-    <header style="display: flex; margin-top: 20px;">
-    <a href="index.php"><h3 style="color:#dc3545;">Home</h3></a>
-    <div>
-       <form method="post" action="../actions/search.php" style='display: flex'>
-
-        <input type="text" class="form-control mb-0" id="search" name="search" placeholder="Type here to search" style="width: 400px; margin-left: 200px">
-        <button style="margin-left: -50px" class="btn btn-primary float-right" type="submit" name="searchbutton">Search</button>
-
-        </form>
-</div>
-
-        <a href="home.php"><h3 style="color:black; margin-left: 200px;">Home</h3></a>
-        <a href="all_product.php"><h3 style="color:black; margin-left: 40px;">Products</p></h3>
-        <a href="../login/login.php"><h3 style="color:black; margin-left: 40px;">Login/Register</p></h3>
-        <a href="cart.php"><h3 style="color: black; margin-left:40px;">Cart</h3></a>
-    </header>
-
-
-        <div class='viewoneproduct' style='display: flex; margin-top: 200px; margin-left: 450px;'>
-        <!-- <form method = POST action="viewallproduct.php" -->
-            <div class='image'>
-            <img style='height: 400px; width: 400px' src="<?php echo $product['product_image'] ?>" alt="">
-            </div>
-
-            <div class='content' style='margin-left: 70px'>
-
-                <h1><?php echo $searchbrand['brand_name'] ?></h1>
-
-                <h1><?php echo $searchcat['cat_name'] ?></h1>
-                <h4><?php echo $product['product_title'] ?></h4>
-                <h4 style='color: grey;'> <?php echo $product['product_price'] ?></h4>
-                <h5 style='color: grey;'><?php echo $product['product_desc'] ?></h5>
-                <a href='../actions/cart_process.php?id=<?php echo $product['product_id'] ?>'  class='btn btn-primary'>Add to Cart</a>
-
-            </div>
-
-</form>
-
-        </div>
+<div class="main">
+  <section class="module">
+    <div class="container">
+      <?php
+      $product=select_one_product_controller($_GET['id']);
+      $cat=$product['product_cat'];
+      $price=$product['product_price'];
+      $id=$_GET['id'];
         
+      $ipadd=getRealIpAddr();
+        if(isset($_SESSION['user_id'])) {
+          $cid=$_SESSION['user_id'];
+        }
+        else{$cid=null;}
+      
+        $qty=1;
+      
+      ?>
+      <div class="row">
+        <div class="col-sm-6 mb-sm-40"><a class="gallery"><img src=<?= $product['product_image']; ?> alt="Single Product Image"/></a>
+          <div class="row" style= "padding-top:5%; "> 
+           <?php if( True ) {?>
+            <div class="cart" style="padding-top:5%">
+              <a class="btn btn-round btn-b" href="<?php echo '../actions/add_to_cart.php?pid='.$id.'&ipadd='.$ipadd.'&cid='.$cid.'&qty='.$qty ?>"><span class="icon-basket">Add To Cart</span></a>
+            </div>
+            <?php } else{?>
+            <div  class="cart">
+            <a class="btn btn-danger btn-round" href="">Out of Stock</a>
+            </div>
+            <?php } ?>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="row">
+            <div class="col-sm-12">
+              <h1 class="product-title font-alt"><?= $product['product_title']; ?></h1>
+            </div>
+        </div>
+          
+        <div class="row mb-20">
+          <div class="col-sm-12">
+            <div class="price font-alt"><span class="amount"><?= $product['product_price']; ?> RWF</span></div>
+          </div>
+        </div>
 
+        <div class="row mb-20">
+          <div class="col-sm-12">
+            <div class="description">
+              <p><?= $product['product_desc']; ?></p>
+            </div>
+          </div>
+        </div> 
+        <div class="row mb-20">
+           <?php if( True ) {?>
+          <form method="get" action="pay_now.php">
+          <div class="col-sm-4 mb-sm-20">
+            <input class="form-control input-lg" type="number" name="qty" value="1" max="40" min="1" required="required"/>
+            <input class="form-control input-lg" type="hidden" name="pid" value=<?= $product['product_id']?>/>
+            <input class="form-control input-lg" type="hidden" name="price" value=<?= $price?>/>
+            
+          </div>
+         
+          <div class="col-sm-8"><button class="btn btn-lg btn-block btn-round btn-b" type="submit" >Buy Now</button></div>
+          </form>
+          <?php } ?>
+        </div>                
+    </div>   
+  </section>
+      
+  
 
-
-</body>
-</html>
+  <hr class="divider-w">
+  
+  <hr class="divider-w">
+<!-- include staple footer               -->
+<?php include('footer.php');?>

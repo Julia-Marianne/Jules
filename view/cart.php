@@ -1,497 +1,130 @@
-<!DOCTYPE html>
-<html lang="zxx" class="no-js">
-
-<head>
-    <!-- Mobile Specific Meta -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Favicon-->
-    <link rel="shortcut icon" href="img/fav.png">
-    <!-- Author Meta -->
-    <meta name="author" content="CodePixar">
-    <!-- Meta Description -->
-    <meta name="description" content="">
-    <!-- Meta Keyword -->
-    <meta name="keywords" content="">
-    <!-- meta character set -->
-    <meta charset="UTF-8">
-    <!-- Site Title -->
-    <title>Shea Jo</title>
-
-    <!--
-            CSS
-            ============================================= -->
-    <link rel="stylesheet" href="../css/linearicons.css">
-    <link rel="stylesheet" href="../css/owl.carousel.css">
-    <link rel="stylesheet" href="../css/font-awesome.min.css">
-    <link rel="stylesheet" href="../css/themify-icons.css">
-    <link rel="stylesheet" href="../css/nice-select.css">
-    <link rel="stylesheet" href="../css/nouislider.min.css">
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/main.css">
-</head>
-
-<body>
-
-    <!-- Start Header Area -->
-	<header class="header_area sticky-header">
-		<div class="main_menu">
-			<nav class="navbar navbar-expand-lg navbar-light main_box">
-				<div class="container">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="home.php"><img src="img/logo.png" alt=""></a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-						<ul class="nav navbar-nav menu_nav ml-auto">
-							<li class="nav-item active"><a class="nav-link" href="home.php">Home</a></li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Shop</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="all_product.php">Product Display</a></li>
-									<li class="nav-item"><a class="nav-link" href="single_product.php">Single Product</a></li>
-									<li class="nav-item"><a class="nav-link" href="payment.php">Product Checkout</a></li>
-									<li class="nav-item"><a class="nav-link" href="cart.php">Shopping Cart</a></li>
-									<li class="nav-item"><a class="nav-link" href="confirm.php">Confirmation</a></li>
-								</ul>
-							</li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Login/Register</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="../login/login.php">Login</a></li>
-									<li class="nav-item"><a class="nav-link" href="../login/register.php">Register</a></li>	
-								</ul>
-							</li>
-							<li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
-						</ul>
-						<ul class="nav navbar-nav navbar-right">
-							<li class="nav-item"><a href="cart.php" class="cart"><span class="ti-bag"></span></a></li>
-							<li class="nav-item">
-								<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-		</div>
-		<div class="search_input" id="search_input_box">
-			<div class="container">
-				<form class="d-flex justify-content-between">
-					<input type="text" class="form-control" id="search_input" placeholder="Search Here">
-					<button type="submit" class="btn"></button>
-					<span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
-				</form>
-			</div>
-		</div>
-	</header>
-	<!-- End Header Area -->
-
-    <!-- Start Banner Area -->
-    <section class="banner-area organic-breadcrumb">
-        <div class="container">
-            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-                <div class="col-first">
-                    <h1>Shopping Cart</h1>
-                    <nav class="d-flex align-items-center">
-                        <a href="home.php">Home<span class="lnr lnr-arrow-right"></span></a>
-                        <a href="cart.php">Cart</a>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Banner Area -->
-
-    <!--================Cart Area =================-->
-    <section class="cart_area">
-        <div class="container">
-            <div class="cart_inner">
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Product</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="img/cart.jpg" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <p>Minimalistic shop for multipurpose use</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$360.00</h5>
-                                </td>
-                                <td>
-                                    <div class="product_count">
-                                        <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
-                                            class="input-text qty">
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                            class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                            class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$720.00</h5>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="img/cart.jpg" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <p>Minimalistic shop for multipurpose use</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$360.00</h5>
-                                </td>
-                                <td>
-                                    <div class="product_count">
-                                        <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
-                                            class="input-text qty">
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                            class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                            class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$720.00</h5>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="img/cart.jpg" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <p>Minimalistic shop for multipurpose use</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$360.00</h5>
-                                </td>
-                                <td>
-                                    <div class="product_count">
-                                        <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:"
-                                            class="input-text qty">
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                            class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-                                        <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                            class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$720.00</h5>
-                                </td>
-                            </tr>
-                            <tr class="bottom_button">
-                                <td>
-                                    <a class="gray_btn" href="#">Update Cart</a>
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-                                    <div class="cupon_text d-flex align-items-center">
-                                        <input type="text" placeholder="Coupon Code">
-                                        <a class="primary-btn" href="#">Apply</a>
-                                        <a class="gray_btn" href="#">Close Coupon</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-                                    <h5>Subtotal</h5>
-                                </td>
-                                <td>
-                                    <h5>$2160.00</h5>
-                                </td>
-                            </tr>
-                            <tr class="shipping_area">
-                                <td>
-
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-                                    <h5>Shipping</h5>
-                                </td>
-                                <td>
-                                    <div class="shipping_box">
-                                        <ul class="list">
-                                            <li><a href="#">Flat Rate: $5.00</a></li>
-                                            <li><a href="#">Free Shipping</a></li>
-                                            <li><a href="#">Flat Rate: $10.00</a></li>
-                                            <li class="active"><a href="#">Local Delivery: $2.00</a></li>
-                                        </ul>
-                                        <h6>Calculate Shipping <i class="fa fa-caret-down" aria-hidden="true"></i></h6>
-                                        <select class="shipping_select">
-                                            <option value="1">Bangladesh</option>
-                                            <option value="2">India</option>
-                                            <option value="4">Pakistan</option>
-                                        </select>
-                                        <select class="shipping_select">
-                                            <option value="1">Select a State</option>
-                                            <option value="2">Select a State</option>
-                                            <option value="4">Select a State</option>
-                                        </select>
-                                        <input type="text" placeholder="Postcode/Zipcode">
-                                        <a class="gray_btn" href="#">Update Details</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="out_button_area">
-                                <td>
-
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-                                    <div class="checkout_btn_inner d-flex align-items-center">
-                                        <a class="gray_btn" href="#">Continue Shopping</a>
-                                        <a class="primary-btn" href="#">Proceed to checkout</a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--================End Cart Area =================-->
-
-    <!-- start footer Area -->
-    <footer class="footer-area section_gap">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3  col-md-6 col-sm-6">
-                    <div class="single-footer-widget">
-                        <h6>About Us</h6>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-                            ut labore dolore
-                            magna aliqua.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-4  col-md-6 col-sm-6">
-                    <div class="single-footer-widget">
-                        <h6>Newsletter</h6>
-                        <p>Stay update with our latest</p>
-                        <div class="" id="mc_embed_signup">
-
-                            <form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                                method="get" class="form-inline">
-
-                                <div class="d-flex flex-row">
-
-                                    <input class="form-control" name="EMAIL" placeholder="Enter Email" onfocus="this.placeholder = ''"
-                                        onblur="this.placeholder = 'Enter Email '" required="" type="email">
-
-
-                                    <button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right"
-                                            aria-hidden="true"></i></button>
-                                    <div style="position: absolute; left: -5000px;">
-                                        <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value=""
-                                            type="text">
-                                    </div>
-
-                                    <!-- <div class="col-lg-4 col-md-4">
-													<button class="bb-btn btn"><span class="lnr lnr-arrow-right"></span></button>
-												</div>  -->
-                                </div>
-                                <div class="info"></div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3  col-md-6 col-sm-6">
-                    <div class="single-footer-widget mail-chimp">
-                        <h6 class="mb-20">Instragram Feed</h6>
-                        <ul class="instafeed d-flex flex-wrap">
-                            <li><img src="img/i1.jpg" alt=""></li>
-                            <li><img src="img/i2.jpg" alt=""></li>
-                            <li><img src="img/i3.jpg" alt=""></li>
-                            <li><img src="img/i4.jpg" alt=""></li>
-                            <li><img src="img/i5.jpg" alt=""></li>
-                            <li><img src="img/i6.jpg" alt=""></li>
-                            <li><img src="img/i7.jpg" alt=""></li>
-                            <li><img src="img/i8.jpg" alt=""></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 col-sm-6">
-                    <div class="single-footer-widget">
-                        <h6>Follow Us</h6>
-                        <p>Let us be social</p>
-                        <div class="footer-social d-flex align-items-center">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-dribbble"></i></a>
-                            <a href="#"><i class="fa fa-behance"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
-                <p class="footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-</p>
-            </div>
-        </div>
-    </footer>
-    <!-- End footer Area -->
-
-    <script src="../js/vendor/jquery-2.2.4.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-	 crossorigin="anonymous"></script>
-	<script src="../js/vendor/bootstrap.min.js"></script>
-	<script src="../js/jquery.ajaxchimp.min.js"></script>
-	<script src="../js/jquery.nice-select.min.js"></script>
-	<script src="../js/jquery.sticky.js"></script>
-    <script src="../js/nouislider.min.js"></script>
-	<script src="../js/jquery.magnific-popup.min.js"></script>
-	<script src="../js/owl.carousel.min.js"></script>
-	<!--gmaps Js-->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-	<script src="../js/gmaps.min.js"></script>
-	<script src="../js/main.js"></script>
-</body>
-
-</html>
-
-
 <?php
-session_start();
+
+require('../controllers/product_controller.php');
 require('../controllers/cart_controller.php');
-// return array of all rows, or false (if it failed)
-$cart = select_all_cart_controller();
-
-$id = $_SESSION['user_id'];
-$get_total = get_total_controller($id);
-
-foreach($get_total as $total){
-   $get_tot =  $total["sum"];
-}
-$_SESSION["Cart_total"] = $get_tot;
-
-
-
-
+session_start();
+include('menu.php');
 ?>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../CSS/bootstrap1.css">
-    <!-- Style CSS -->
-    <link rel="stylesheet" href="../CSS/style.css">
-    <!-- Responsive CSS -->
-    <link rel="stylesheet" href="../CSS/responsive.css">
-
-    <script src="https://kit.fontawesome.com/75618b9696.js" crossorigin="anonymous"></script>
+<div class="main">
     
-</head>
-<body style=' margin-bottom: 20px'>
-
-<header style="display: flex; background-color:#fd7e14; color: black;">
-    <a href="home.php"><h3 style="color:black;">Home</h3></a>
-    <div>
-    <form method="post" action="../actions/search.php" style='display: flex'>
-
-        <input type="text" class="form-control mb-0" id="search" name="search" placeholder="Type here to search" style="width: 400px; margin-left: 200px">
-        <button style="margin-left: -50px" class="btn btn-primary float-right" type="submit" name="searchbutton">Search</button>
-
-    </form>
-    </div>
-    
-        <a href="home.php"><h3 style="color:black; margin-left: 200px;">Home</h3></a>
-        <a href="all_product.php"><h3 style="color:black; margin-left: 40px;">Products</p></h3>
-        <a href="cart.php"><h3 style="color: black; margin-left:40px;">Cart</h3></a>
-    
-    
-</header>
-
-<h1 style='margin-top: 60px; margin-left: 600px; color: #6f42c1'>Cart List</h1>
-<h4 style='margin-top: 20px; margin-left: 1070px; color: #6f42c1'>GHC: <?php echo $_SESSION["Cart_total"];    ?></h4>
-<a href="./payment.php" style="margin-left:1070px; color: black">Click here to proceed to payment</a>
-
-<?php
-    foreach($cart as $x){
-        echo 
-        "
-        
-        <a href='./single_product.php?id={$x['product_id']}'>
-        <div class='card' style='width: 35rem; margin-bottom: 20px; margin-left: 430px;'>
-            <div class='card-body' style='display: flex;'>
-            <img style='height: 200px; width: 200px' src='{$x['product_image']}' alt='Card image cap'>
-            <div style='margin-top: 30px; margin-left: 30px;'>
-                <h5 style='color: black;' class='card-title'>{$x['product_title']}</h5>
-                <h6 class='card-subtitle mb-2 text-muted'>{$x['product_price']}</h6>
-                <p style='color: grey;' class='card-text'>{$x['product_desc']}</p>
-                <br>
-                <a href='../actions/managecartquantity.php?id={$x['product_id']}' class='btn btn-primary'>Manage Quantity</a>
-                <a href='../actions/removefromcart.php?id={$x['product_id']}' class='btn btn-primary' style='width: 130px; height: 38px;'>Remove</a>
-            </div>
-            </div>
-            
+  <section class="module">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <h1 class="module-title font-alt">Checkout</h1>
         </div>
-        </a>
-       
-    ";
-    }
-?>
-<!-- display: inline-block; -->
-            <!-- <br> -->
-            <!-- <a href='../Actions/cartprocess.php?id={$x['product_id']}' class='btn btn-primary'>Add to Cart</a> -->
+      </div>
+    
+      <hr class="divider-w pt-20">
+      <div class="row">
+        <div class="col-sm-12">
+          <table class="table table-striped table-border checkout-table">
+            <tr>
+              <th class="hidden-xs">Item</th>
+              <th>Description</th>
+              <th class="hidden-xs">Price</th>
+              <th>Quantity</th>
+              <th>Delete</th>
+            </tr>
+            <?php  
+            //getting the details of the cart
+              if (isset($_SESSION['user_id'])){
+                  $cid = $_SESSION['user_id'];
+                  $cart = displayCart_controller($cid);
+                  $checkOutAmt = cartValue_controller($cid);
+                  
+              }
+            else{
+                $ipadd = getRealIpAddr();
+                $cart = displayCartNull_controller($ipadd);
+                $checkOutAmt = cartValueNull_controller($ipadd);
+              
+            }
+            foreach ($cart as $item){
+            ?>
+            
+            <tr>  
+              <td class="hidden-xs"><a href=<?php echo "single_product.php?id=".$item['p_id'];?>><img src=<?= $item['product_image'];?> alt="Accessories Pack"/></a></td>
+              <td>
+                <h5 class="product-title font-alt"><?=$item['product_title'];?></h5>
+              </td>
+              <td class="hidden-xs">
+                <h5 class="product-title font-alt"><?=$item['product_price'];?></h5>
+              </td>
+              <td>
+                <form>
+                  
+                  <input class="form-control" type="number" class="form-control" min=1 id="qty" 
+                  data-pid="<?= $item['p_id'];?>" data-qty="<?= $item['qty'];?>" value="<?php echo $item['qty']  ?>" 
+                  onchange="updatecart(this)" onkeyup="updatecart(this)" >
+                </form>
+              </td>
 
-<!--  -->
+              <td class="pr-remove"><a href= <?php echo "../actions/cart_process.php?deleteid=".$item['p_id'] ;?> title="Remove"><i class="fa fa-times"></i></a></td>
+              
+            </tr>
+            
+              
+              <?php }?>  
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3 ">
+          <div class="form-group">
+          <a href='home.php#products'> <button class="btn btn-lg btn-block btn-round btn-d" type="submit" > <i class="fa fa-shopping-cart" style="font-size:20px"></i> Continue Shopping</button></a>
+          </div>
+        </div>
+      </div>
 
-</body>
-</html>
+      <script> 
+        function updatecart(j){
+          $.ajax({
+            url:'../actions/update_cart.php',
+            type:'POST',
+            data:{
+              'pid':j.getAttribute('data-pid'),
+              'cid':j.getAttribute('data-cid'),
+              'ipadd':j.getAttribute('data-ipadd'),
+              'qty':j.value
+            
+              },
+              success: function(data){
+              if(data.success == true){ // if true (1)
+                  setTimeout(function(){// wait for 5 secs(2)
+                      location.reload(); // then reload the page.(3)
+                  }, 5000); 
+              }
+            }
+           
+              
+          });
+        }
+      </script>
+      
+      <hr class="divider-w">
+      <div class="row mt-70">
+        <div class="col-sm-5 col-sm-offset-7">
+          <div class="shop-Cart-totalbox">
+            <h4 class="font-alt">Cart Totals</h4>
+            <table class="table table-striped table-border checkout-table">
+              <tbody>
+                <tr>
+                  <th>Cart Subtotal :</th>
+                  <td><h5 class="product-title font-alt"><?=$checkOutAmt["Result"];?></h5></td>
+                </tr>
+                <tr class="shop-Cart-totalprice">
+                  <th>Total :</th>
+                  <td><h5 class="product-title font-alt"><?=$checkOutAmt["Result"];?></h5></td>
+                </tr>
+              </tbody>
+            </table>
+            <a class="btn btn-lg btn-block btn-round btn-d" href="payment.php?amount=<?=$checkOutAmt["Result"]?>">Proceed to Checkout</a> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>      
+</div>
+<?php include_once('footer.php');?>
